@@ -6,6 +6,11 @@ import { useInView } from "framer-motion";
 import { Link } from 'react-scroll';
 import Image from 'next/image';
 import { MdEmail } from "react-icons/md";
+import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
+import { FaJava, FaPython, FaReact } from "react-icons/fa";
+import { SiCplusplus, SiCsharp, SiExpress, SiLatex, SiMongodb } from "react-icons/si";
+import { BiLogoPostgresql } from 'react-icons/bi';
+import { FaUnity } from 'react-icons/fa6';
 
 export default function Home() {
   const container = {
@@ -65,23 +70,29 @@ export default function Home() {
     }
   }
 
-  const scrollToProjects = useRef();
   const { scrollYProgress } = useScroll()
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 1000]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 1125]);
 
   return (
     <div id='top' className='bg-neutral relative'>
-      <div className="sticky top-0 z-50 navbar bg-base-100">
-        <div className="navbar-center mx-auto hidden lg:flex">
-          <ul className="menu menu-horizontal mx-auto px-1">
-            <li><Link to='top' smooth>Welcome</Link></li>
-            <li><Link to='projects' smooth>Projects</Link></li>
-            <li><Link to='awards' smooth>Awards</Link></li>
-            <li><Link to='footer' smooth>Contact</Link></li>
-          </ul>
+      {/* OVERLAY */}
+      <div>
+        {/* NAVBAR */}
+        <div className="sticky top-0 z-50 navbar bg-base-100">
+          <div className="navbar-center mx-auto hidden lg:flex">
+            <ul className="menu menu-horizontal mx-auto px-1">
+              <li><Link to='top' smooth>Welcome</Link></li>
+              <li><Link to='about' smooth>About me</Link></li>
+              <li><Link to='projects' smooth>Projects</Link></li>
+              <li><Link to='awards' smooth>Awards</Link></li>
+              <li><Link to='footer' smooth>Contact</Link></li>
+            </ul>
+          </div>
         </div>
       </div>
+
+
       <div className="prose lg:prose-xl divide-y divide-solid bg-neutral min-w-full">
         {/* INTRODUCTION */}
         <div className="min-h-screen mx-auto relative z-10" style={{ overflow: 'hidden' }}>
@@ -129,7 +140,7 @@ export default function Home() {
               variants={item}
             >
               <div>
-                <h4 className="text-center">An aspiring full-stack developer studying<br />Computer Engineering at the University of Waterloo</h4>
+                <h4 className="text-center">An aspiring full-stack developer</h4>
               </div>
             </motion.li>
             <motion.li
@@ -138,10 +149,92 @@ export default function Home() {
               variants={item}
             >
               <div className="text-center mt-24">
-                <Link to="projects" smooth>Learn more about me</Link>
+                <Link to="about" smooth>Learn more about me</Link>
               </div>
             </motion.li>
           </motion.ul>
+        </div>
+
+        {/* ABOUT ME */}
+        <div id="about">
+          <div className='mx-40 my-16'>
+            <div className="hero">
+              <div className="hero-content flex-col lg:flex-row">
+                <Image
+                  src="/me_at_htn.jpg"
+                  alt='Me eating corndogs at Hack the North 2022'
+                  width={309}
+                  height={469}
+                  className="max-w-sm rounded-lg shadow-2xl" />
+                <div>
+                  <h2 className="text-5xl font-bold">About me</h2>
+                  <p className="py-6">
+                    {"I'm a student currently pursuing a degree in Computer Engineering at the University of Waterloo. I hold a passion for software development and am always looking for opportunities to learn and grow. I'm currently seeking a co-op position for the Spring 2025 term."}
+                    <br />
+                    <br />
+                    {"In my free time, I enjoy chatting with friends, working on personal projects, playing video games, and discovering new music."}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SKILLS */}
+        <div id="skills">
+          <div className="mx-40 my-16">
+            <h2>Skills</h2>
+            <div className='mx-auto grid grid-cols-6 gap-4'>
+              <a href='https://nextjs.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>NextJS</h2>
+                <RiNextjsLine className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://react.dev/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>React</h2>
+                <FaReact className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://expressjs.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Express</h2>
+                <SiExpress className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://tailwindcss.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Tailwind</h2>
+                <RiTailwindCssFill className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://www.postgresql.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Postgres</h2>
+                <BiLogoPostgresql className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://www.mongodb.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>MongoDB</h2>
+                <SiMongodb className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://www.python.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Python</h2>
+                <FaPython className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://dotnet.microsoft.com/en-us/languages/csharp' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>C#</h2>
+                <SiCsharp className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://isocpp.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>C++</h2>
+                <SiCplusplus className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://www.java.com/en/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Java</h2>
+                <FaJava className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://unity.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Unity3D</h2>
+                <FaUnity className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://www.latex-project.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>LaTeX</h2>
+                <SiLatex className='mx-auto my-4' size={'6rem'} />
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* PROJECTS */}
@@ -292,7 +385,7 @@ export default function Home() {
 
         {/* AWARDS */}
         <div id="awards">
-          <div className="mx-40">
+          <div className="mx-40 my-16">
             <h2>Awards</h2>
             <div>
               <motion.ul
