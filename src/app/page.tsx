@@ -359,7 +359,7 @@ export default function Home() {
               >
                 <figure>
                   <Image
-                    src="/fps.png"
+                    src="/fps.PNG"
                     width={500}
                     height={500}
                     alt="Shoes" />
