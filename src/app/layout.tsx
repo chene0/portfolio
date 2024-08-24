@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-neutral min-w-full">
+    <html lang="en" className="bg-neutral min-w-full max-w-full">
       <body>{children}</body>
     </html>
   );
