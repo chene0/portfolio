@@ -85,7 +85,7 @@ export default function Home() {
             <li><Link to='skills' smooth>Skills</Link></li>
             <li><Link to='projects' smooth>Projects</Link></li>
             <li><Link to='awards' smooth>Awards</Link></li>
-            <li><Link to='footer' smooth>Contact</Link></li>
+            <li><Link to='footer' smooth>Connect</Link></li>
           </ul>
         </div>
       </div>
