@@ -76,19 +76,17 @@ export default function Home() {
 
   return (
     <div id='top' className='bg-neutral relative'>
-      {/* OVERLAY */}
-      <div>
-        {/* NAVBAR */}
-        <div className="sticky top-0 z-50 navbar bg-base-100">
-          <div className="navbar-center mx-auto hidden lg:flex">
-            <ul className="menu menu-horizontal mx-auto px-1">
-              <li><Link to='top' smooth>Welcome</Link></li>
-              <li><Link to='about' smooth>About me</Link></li>
-              <li><Link to='projects' smooth>Projects</Link></li>
-              <li><Link to='awards' smooth>Awards</Link></li>
-              <li><Link to='footer' smooth>Contact</Link></li>
-            </ul>
-          </div>
+      {/* NAVBAR */}
+      <div className="sticky top-0 z-50 navbar bg-base-100">
+        <div className="navbar-center mx-auto hidden lg:flex">
+          <ul className="menu menu-horizontal mx-auto px-1">
+            <li><Link to='top' smooth>Welcome</Link></li>
+            <li><Link to='about' smooth>About me</Link></li>
+            <li><Link to='skills' smooth>Skills</Link></li>
+            <li><Link to='projects' smooth>Projects</Link></li>
+            <li><Link to='awards' smooth>Awards</Link></li>
+            <li><Link to='footer' smooth>Contact</Link></li>
+          </ul>
         </div>
       </div>
 
@@ -149,7 +147,7 @@ export default function Home() {
               variants={item}
             >
               <div className="text-center mt-24">
-                <Link to="about" smooth>Learn more about me</Link>
+                <a href='/Ethan%20Chen%20-%20Coop%20-%20Resume%20(August%202024).pdf' target="_blank" rel="noopener noreferrer">Download my resume</a>
               </div>
             </motion.li>
           </motion.ul>
@@ -169,7 +167,7 @@ export default function Home() {
                 <div>
                   <h2 className="text-5xl font-bold">About me</h2>
                   <p className="py-6">
-                    {"I'm a student currently pursuing a degree in Computer Engineering at the University of Waterloo. I hold a passion for software development and am always looking for opportunities to learn and grow. I'm currently seeking a co-op position for the Spring 2025 term."}
+                    {"I'm a student currently pursuing a degree in Computer Engineering at the University of Waterloo. I am passionate about software development and always seek opportunities to learn and grow. I'm currently seeking a co-op position for the Spring 2025 term."}
                     <br />
                     <br />
                     {"In my free time, I enjoy chatting with friends, working on personal projects, playing video games, and discovering new music."}
@@ -415,7 +413,7 @@ export default function Home() {
                   <div className="timeline-start mb-10 md:text-end">
                     <time className="font-mono italic">July 2024</time>
                     <div className="text-lg font-black">University of Waterloo {"President's"} Scholarship of Distinction</div>
-                    Achieved an average of 95% or higher in my final year of high school
+                    Ended with an average of 95% or higher in my final year of high school
                   </div>
                   <hr />
                 </motion.li>
