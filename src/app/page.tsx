@@ -11,6 +11,12 @@ import { FaJava, FaPython, FaReact } from "react-icons/fa";
 import { SiCplusplus, SiCsharp, SiExpress, SiLatex, SiMongodb } from "react-icons/si";
 import { BiLogoPostgresql } from 'react-icons/bi';
 import { FaUnity } from 'react-icons/fa6';
+import { Viewport } from 'next';
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: 'device-width'
+}
 
 export default function Home() {
   const container = {
@@ -182,7 +188,7 @@ export default function Home() {
         <div id="skills">
           <div className="mx-40 my-16">
             <h2>Skills</h2>
-            <div className='mx-auto grid grid-cols-6 gap-4'>
+            <div className='mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4'>
               <a href='https://nextjs.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
                 <h2 className='text-center'>NextJS</h2>
                 <RiNextjsLine className='mx-auto my-4' size={'6rem'} />
@@ -240,7 +246,7 @@ export default function Home() {
           <div className="mx-40 my-16">
             <h2 ref={projectsRef}>Projects</h2>
 
-            <motion.ul className='grid grid-cols-3 gap-4 not-prose container list-none'
+            <motion.ul className='grid grid-cols-1 md:grid-cols-3 gap-4 not-prose container list-none'
               variants={container}
               initial="hidden"
               animate={projectsInView ? "visible" : "hidden"}
