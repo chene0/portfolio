@@ -165,12 +165,12 @@ export default function Home() {
             <div className="hero">
               <div className="hero-content flex-col lg:flex-row">
                 <Image
-                  src="/me_at_htn.jpg"
-                  alt='Me eating corndogs at Hack the North 2022'
+                  src="/portrait0.jpg"
+                  alt='Portrait'
                   width={309}
                   height={469}
                   className="max-w-sm rounded-lg shadow-2xl" />
-                <div>
+                <div className='ml-8'>
                   <h2 className="text-5xl font-bold">About me</h2>
                   <p className="py-6">
                     {"I'm a student currently pursuing a degree in Computer Engineering at the University of Waterloo. I am passionate about software development and always seek opportunities to learn and grow. I'm currently seeking a co-op position for the Spring 2025 term."}
