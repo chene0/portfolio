@@ -84,6 +84,33 @@ export default function Home() {
     <div id='top' className='bg-neutral relative'>
       {/* NAVBAR */}
       <div className="sticky top-0 z-50 navbar bg-base-100">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <li><Link to='top' smooth>Welcome</Link></li>
+            <li><Link to='about' smooth>About me</Link></li>
+            <li><Link to='skills' smooth>Skills</Link></li>
+            <li><Link to='projects' smooth>Projects</Link></li>
+            <li><Link to='awards' smooth>Awards</Link></li>
+            <li><Link to='footer' smooth>Connect</Link></li>
+          </ul>
+        </div>
+
         <div className="navbar-center mx-auto hidden lg:flex">
           <ul className="menu menu-horizontal mx-auto px-1">
             <li><Link to='top' smooth>Welcome</Link></li>
@@ -99,7 +126,7 @@ export default function Home() {
 
       <div className="prose lg:prose-xl divide-y divide-solid bg-neutral min-w-full">
         {/* INTRODUCTION */}
-        <div className="min-h-screen mx-auto relative z-10" style={{ overflow: 'hidden' }}>
+        <div className="mb-32 lg:mb-0 lg:min-h-screen mx-auto relative z-10" style={{ overflow: 'hidden' }}>
           {/* CLOUD BACKGROUND */}
           <motion.div
             id="introduction"
@@ -132,7 +159,7 @@ export default function Home() {
               className="item z-10"
               variants={item}
             >
-              <div className="mt-32 z-10">
+              <div className="mx-auto mt-32 z-10">
                 <h1 className="text-center z-10">
                   {"Hey! I'm Ethan."}
                 </h1>
@@ -161,7 +188,7 @@ export default function Home() {
 
         {/* ABOUT ME */}
         <div id="about">
-          <div className='mx-40 my-16'>
+          <div className='mx-auto lg:mx-40 my-16'>
             <div className="hero">
               <div className="hero-content flex-col lg:flex-row">
                 <Image
@@ -186,9 +213,9 @@ export default function Home() {
 
         {/* SKILLS */}
         <div id="skills">
-          <div className="mx-40 my-16">
+          <div className="mx-10 lg:mx-40 my-16">
             <h2>Skills</h2>
-            <div className='mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4'>
+            <div className='mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
               <a href='https://nextjs.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
                 <h2 className='text-center'>NextJS</h2>
                 <RiNextjsLine className='mx-auto my-4' size={'6rem'} />
@@ -243,15 +270,15 @@ export default function Home() {
 
         {/* PROJECTS */}
         <div id="projects" className='min-h-screen'>
-          <div className="mx-40 my-16">
+          <div className="mx-10 lg:mx-40 my-16">
             <h2 ref={projectsRef}>Projects</h2>
 
-            <motion.ul className='grid grid-cols-1 md:grid-cols-3 gap-4 not-prose container list-none'
+            <motion.ul className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 not-prose container list-none'
               variants={container}
               initial="hidden"
               animate={projectsInView ? "visible" : "hidden"}
             >
-              <motion.li className="card bg-base-100 w-96 shadow-xl item"
+              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
                 key={0}
                 variants={projectsItem}
               >
@@ -275,7 +302,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.li>
-              <motion.li className="card bg-base-100 w-96 shadow-xl item"
+              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
                 key={1}
                 variants={projectsItem}
               >
@@ -305,7 +332,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.li>
-              <motion.li className="card bg-base-100 w-96 shadow-xl item"
+              <motion.li className="card bg-base-100 w-80 md:w-88 xl:w-96 shadow-xl item"
                 key={2}
                 variants={projectsItem}
               >
@@ -329,7 +356,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.li>
-              <motion.li className="card bg-base-100 w-96 shadow-xl item"
+              <motion.li className="card bg-base-100 w-80 md:w-88 xl:w-96 shadow-xl item"
                 key={3}
                 variants={projectsItem}
               >
@@ -359,7 +386,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.li>
-              <motion.li className="card bg-base-100 w-96 shadow-xl item"
+              <motion.li className="card bg-base-100 w-80 md:w-88 xl:w-96 shadow-xl item"
                 key={4}
                 variants={projectsItem}
               >
@@ -389,7 +416,7 @@ export default function Home() {
 
         {/* AWARDS */}
         <div id="awards">
-          <div className="mx-40 my-16">
+          <div className="mx-10 lg:mx-40 my-16">
             <h2>Awards</h2>
             <div>
               <motion.ul
