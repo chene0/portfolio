@@ -149,7 +149,7 @@ export default function Home() {
 
           {/* TEXT INTRODUCTION */}
           <motion.ul
-            className="relative container list-none z-10"
+            className="mx-auto relative container list-none z-10"
             variants={container}
             initial="hidden"
             animate="visible"
