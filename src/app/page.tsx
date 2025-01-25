@@ -7,8 +7,8 @@ import { Link } from 'react-scroll';
 import Image from 'next/image';
 import { MdEmail } from "react-icons/md";
 import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
-import { FaJava, FaPython, FaReact } from "react-icons/fa";
-import { SiCplusplus, SiCsharp, SiExpress, SiLatex, SiMongodb } from "react-icons/si";
+import { FaJava, FaPython, FaReact, FaDocker, FaAws } from "react-icons/fa";
+import { SiCplusplus, SiCsharp, SiExpress, SiLatex, SiMongodb, SiJira } from "react-icons/si";
 import { BiLogoPostgresql } from 'react-icons/bi';
 import { FaUnity } from 'react-icons/fa6';
 import { Viewport } from 'next';
@@ -199,7 +199,7 @@ export default function Home() {
                   className="max-w-sm rounded-lg shadow-2xl" />
                 <div className='ml-8'>
                   <h2 className="text-5xl font-bold">About me</h2>
-                  <p className="py-6">
+                  <p className="py-0 lg:py-6">
                     {"I'm a student currently pursuing a degree in Computer Engineering at the University of Waterloo. I am passionate about software development and always seek opportunities to learn and grow. I'm currently seeking a co-op position for the Spring 2025 term."}
                     <br />
                     <br />
@@ -264,6 +264,18 @@ export default function Home() {
                 <h2 className='text-center'>LaTeX</h2>
                 <SiLatex className='mx-auto my-4' size={'6rem'} />
               </a>
+              <a href='https://www.docker.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Docker</h2>
+                <FaDocker className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://aws.amazon.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>AWS</h2>
+                <FaAws className='mx-auto my-4' size={'6rem'} />
+              </a>
+              <a href='https://www.atlassian.com/software/jira' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
+                <h2 className='text-center'>Jira</h2>
+                <SiJira className='mx-auto my-4' size={'6rem'} />
+              </a>
             </div>
           </div>
         </div>
@@ -278,6 +290,24 @@ export default function Home() {
               initial="hidden"
               animate={projectsInView ? "visible" : "hidden"}
             >
+              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
+                key={0}
+                variants={projectsItem}
+              >
+                <figure>
+                  <Image
+                    src="/ece198.png"
+                    width={500}
+                    height={500}
+                    alt="ECE 198" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">Home Power Monitoring Device</h2>
+                  <p>Configured and programmed two STM32F401RE boards in C to measure the power usage of an external device using a current transformer that is transmitted to a display board via UART. Developed with Matias Rivas and Gurvir Randhawa for ECE 198: Project Studio.</p>
+                  <div className="card-actions justify-end">
+                  </div>
+                </div>
+              </motion.li>
               <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
                 key={0}
                 variants={projectsItem}
