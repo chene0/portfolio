@@ -296,6 +296,42 @@ export default function Home() {
               >
                 <figure>
                   <Image
+                    src="/geesehacks2025.png"
+                    width={500}
+                    height={500}
+                    alt="GeeseHacks 2025" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">GeeseTalk</h2>
+                  <p>{"A web app dedicated to offering gamified isolated training of public speaking and social skills at the user's convenience. Developed at GeeseHacks 2025 with Evan He, Rijul Chaddha, and Lawrence Zou."}</p>
+                  <div className="card-actions justify-end">
+                    <a
+                      target="_blank"
+                      href="https://geese-hacks-project.vercel.app/"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary mx-1"
+                    >Website</a>
+                    <a
+                      target="_blank"
+                      href="https://devpost.com/software/geesetalk"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary mx-1"
+                    >Devpost</a>
+                    <a
+                      target="_blank"
+                      href="https://github.com/RijulChaddha9504/GeeseHacks"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary mx-1"
+                    >Repository</a>
+                  </div>
+                </div>
+              </motion.li>
+              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
+                key={0}
+                variants={projectsItem}
+              >
+                <figure>
+                  <Image
                     src="/ece198.png"
                     width={500}
                     height={500}
