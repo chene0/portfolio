@@ -180,7 +180,7 @@ export default function Home() {
               variants={item}
             >
               <div className="text-center mt-24">
-                <a href='/Ethan%20Chen%20-%20Coop%20-%20Resume%20(December%202024).pdf' target="_blank" rel="noopener noreferrer">Download my resume</a>
+                <a href='/Ethan%20Chen%20-%20Coop%20-%20Resume%20(January%2027%202025).pdf' target="_blank" rel="noopener noreferrer">Download my resume</a>
               </div>
             </motion.li>
           </motion.ul>
