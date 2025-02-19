@@ -191,12 +191,20 @@ export default function Home() {
           <div className='mx-auto lg:mx-40 my-16'>
             <div className="hero">
               <div className="hero-content flex-col lg:flex-row">
-                <Image
-                  src="/portrait0.jpg"
-                  alt='Portrait'
-                  width={309}
-                  height={469}
-                  className="max-w-sm rounded-lg shadow-2xl" />
+                <motion.div whileHover={{
+                  scale: 1.1,
+                  transition: {
+                    type: "spring",
+                    duration: 1
+                  },
+                }}>
+                  <Image
+                    src="/IMG_0098.jpg"
+                    alt='Portrait'
+                    width={309}
+                    height={469}
+                    className="max-w-sm rounded-full shadow-2xl" />
+                </motion.div>
                 <div className='ml-8'>
                   <h2 className="text-5xl font-bold">About me</h2>
                   <p className="py-0 lg:py-6">
