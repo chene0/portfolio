@@ -36,4 +36,10 @@ declare global {
 		award_name: string;
 		description: string;
 	}
+
+	interface Social {
+		name?: string;
+		destination: string;
+		icon: IconType;
+	}
 }
