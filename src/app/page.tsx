@@ -11,7 +11,12 @@ import { FaJava, FaPython, FaReact, FaDocker, FaAws } from "react-icons/fa";
 import { SiCplusplus, SiCsharp, SiExpress, SiLatex, SiMongodb, SiJira } from "react-icons/si";
 import { BiLogoPostgresql } from 'react-icons/bi';
 import { FaUnity } from 'react-icons/fa6';
-import { Viewport } from 'next';
+import type { Viewport } from 'next';
+import { MobileNavbar, Navbar } from '@/components/navbar';
+import { SkillsComponent } from '@/components/skills';
+import { ProjectsComponent } from '@/components/projects';
+import { container } from "@/utils/constants";
+import { AwardsComponent } from '@/components/awards';
 
 export const viewport: Viewport = {
   initialScale: 1,
@@ -19,35 +24,7 @@ export const viewport: Viewport = {
 }
 
 export default function Home() {
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  }
-
   const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
-
-  const projectsItem = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
-
-  const timelineItem = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -84,43 +61,8 @@ export default function Home() {
     <div id='top' className='bg-neutral relative'>
       {/* NAVBAR */}
       <div className="sticky top-0 z-50 navbar bg-base-100">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            <li><Link to='top' smooth>Welcome</Link></li>
-            <li><Link to='about' smooth>About me</Link></li>
-            <li><Link to='skills' smooth>Skills</Link></li>
-            <li><Link to='projects' smooth>Projects</Link></li>
-            <li><Link to='awards' smooth>Awards</Link></li>
-            <li><Link to='footer' smooth>Connect</Link></li>
-          </ul>
-        </div>
-
-        <div className="navbar-center mx-auto hidden lg:flex">
-          <ul className="menu menu-horizontal mx-auto px-1">
-            <li><Link to='top' smooth>Welcome</Link></li>
-            <li><Link to='about' smooth>About me</Link></li>
-            <li><Link to='skills' smooth>Skills</Link></li>
-            <li><Link to='projects' smooth>Projects</Link></li>
-            <li><Link to='awards' smooth>Awards</Link></li>
-            <li><Link to='footer' smooth>Connect</Link></li>
-          </ul>
-        </div>
+        <MobileNavbar />
+        <Navbar />
       </div>
 
 
@@ -223,68 +165,7 @@ export default function Home() {
         <div id="skills">
           <div className="mx-10 lg:mx-40 my-16">
             <h2>Skills</h2>
-            <div className='mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
-              <a href='https://nextjs.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>NextJS</h2>
-                <RiNextjsLine className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://react.dev/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>React</h2>
-                <FaReact className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://expressjs.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Express</h2>
-                <SiExpress className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://tailwindcss.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Tailwind</h2>
-                <RiTailwindCssFill className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://www.postgresql.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Postgres</h2>
-                <BiLogoPostgresql className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://www.mongodb.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>MongoDB</h2>
-                <SiMongodb className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://www.python.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Python</h2>
-                <FaPython className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://dotnet.microsoft.com/en-us/languages/csharp' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>C#</h2>
-                <SiCsharp className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://isocpp.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>C++</h2>
-                <SiCplusplus className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://www.java.com/en/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Java</h2>
-                <FaJava className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://unity.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Unity3D</h2>
-                <FaUnity className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://www.latex-project.org/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>LaTeX</h2>
-                <SiLatex className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://www.docker.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Docker</h2>
-                <FaDocker className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://aws.amazon.com/' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>AWS</h2>
-                <FaAws className='mx-auto my-4' size={'6rem'} />
-              </a>
-              <a href='https://www.atlassian.com/software/jira' target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-                <h2 className='text-center'>Jira</h2>
-                <SiJira className='mx-auto my-4' size={'6rem'} />
-              </a>
-            </div>
+            <SkillsComponent />
           </div>
         </div>
 
@@ -293,313 +174,16 @@ export default function Home() {
           <div className="mx-10 lg:mx-40 my-16">
             <h2 ref={projectsRef}>Projects</h2>
 
-            <motion.ul className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 not-prose container list-none'
-              variants={container}
-              initial="hidden"
-              animate={projectsInView ? "visible" : "hidden"}
-            >
-              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
-                key={0}
-                variants={projectsItem}
-              >
-                <figure>
-                  <Image
-                    src="/geesehacks2025.png"
-                    width={500}
-                    height={500}
-                    alt="GeeseHacks 2025" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">GeeseTalk</h2>
-                  <p>{"A web app dedicated to offering gamified isolated training of public speaking and social skills at the user's convenience. Developed at GeeseHacks 2025 with Evan He, Rijul Chaddha, and Lawrence Zou."}</p>
-                  <div className="card-actions justify-end">
-                    <a
-                      target="_blank"
-                      href="https://geese-hacks-project.vercel.app/"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Website</a>
-                    <a
-                      target="_blank"
-                      href="https://devpost.com/software/geesetalk"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Devpost</a>
-                    <a
-                      target="_blank"
-                      href="https://github.com/RijulChaddha9504/GeeseHacks"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Repository</a>
-                  </div>
-                </div>
-              </motion.li>
-              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
-                key={0}
-                variants={projectsItem}
-              >
-                <figure>
-                  <Image
-                    src="/ece198.png"
-                    width={500}
-                    height={500}
-                    alt="ECE 198" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Home Power Monitoring Device</h2>
-                  <p>Configured and programmed two STM32F401RE boards in C to measure the power usage of an external device using a current transformer that is transmitted to a display board via UART. Developed with Matias Rivas and Gurvir Randhawa for ECE 198: Project Studio.</p>
-                  <div className="card-actions justify-end">
-                  </div>
-                </div>
-              </motion.li>
-              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
-                key={0}
-                variants={projectsItem}
-              >
-                <figure>
-                  <Image
-                    src="/portfolio.png"
-                    width={500}
-                    height={500}
-                    alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">This portfolio!</h2>
-                  <p>Built with NextJS, React, and Tailwind.</p>
-                  <div className="card-actions justify-end">
-                    <a
-                      target="_blank"
-                      href="https://github.com/chene0/portfolio"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Repository</a>
-                  </div>
-                </div>
-              </motion.li>
-              <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
-                key={1}
-                variants={projectsItem}
-              >
-                <figure>
-                  <Image
-                    src="/vance.png"
-                    width={500}
-                    height={500}
-                    alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Vance</h2>
-                  <p>Work through problem sets with this assistant that will narrow your focus to your areas of weakness.</p>
-                  <div className="card-actions justify-end">
-                    <a
-                      target="_blank"
-                      href="https://vance-phi.vercel.app/"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Website</a>
-                    <a
-                      target="_blank"
-                      href="https://github.com/chene0/vance"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Repository</a>
-                  </div>
-                </div>
-              </motion.li>
-              <motion.li className="card bg-base-100 w-80 md:w-88 xl:w-96 shadow-xl item"
-                key={2}
-                variants={projectsItem}
-              >
-                <figure>
-                  <Image
-                    src="/focar.png"
-                    width={500}
-                    height={500}
-                    alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Focar</h2>
-                  <p>Interact with Todoist right from your desktop.</p>
-                  <div className="card-actions justify-end">
-                    <a
-                      target="_blank"
-                      href="https://github.com/chene0/focarapp"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Repository</a>
-                  </div>
-                </div>
-              </motion.li>
-              <motion.li className="card bg-base-100 w-80 md:w-88 xl:w-96 shadow-xl item"
-                key={3}
-                variants={projectsItem}
-              >
-                <figure>
-                  <Image
-                    src="/pilon.jpg"
-                    width={500}
-                    height={500}
-                    alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Pilon</h2>
-                  <p>Produce mathematical notation in real-time. Developed at Hack the North 2022 with Salman Youssef and Pravin Lohani.</p>
-                  <div className="card-actions justify-end">
-                    <a
-                      target="_blank"
-                      href="https://devpost.com/software/lon"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Devpost</a>
-                    <a
-                      target="_blank"
-                      href="https://github.com/chene0/HackTheNorth"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Repository</a>
-                  </div>
-                </div>
-              </motion.li>
-              <motion.li className="card bg-base-100 w-80 md:w-88 xl:w-96 shadow-xl item"
-                key={4}
-                variants={projectsItem}
-              >
-                <figure>
-                  <Image
-                    src="/fps.PNG"
-                    width={500}
-                    height={500}
-                    alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">Untitled First Person Shooter</h2>
-                  <p>Rely on your audio and attentiveness to thrive in this eerie shooter.</p>
-                  <div className="card-actions justify-end">
-                    <a
-                      target="_blank"
-                      href="https://github.com/chene0/personal-project"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary mx-1"
-                    >Repository</a>
-                  </div>
-                </div>
-              </motion.li>
-            </motion.ul>
+            <ProjectsComponent projectsInView={projectsInView} />
           </div>
         </div>
 
         {/* AWARDS */}
-        <div id="awards">
+        <div id="awards" ref={awardsRef}>
           <div className="mx-10 lg:mx-40 my-16">
             <h2>Awards</h2>
             <div>
-              <motion.ul
-                className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical container list-none"
-                ref={awardsRef}
-                variants={container}
-                initial="hidden"
-                animate={awardsInView ? "visible" : "hidden"}
-              >
-                <motion.li
-                  key={0}
-                  className="item"
-                  variants={timelineItem}
-                >
-                  <div className="timeline-middle">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="h-5 w-5">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                        clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="timeline-start mb-10 md:text-end">
-                    <time className="font-mono italic">July 2024</time>
-                    <div className="text-lg font-black">University of Waterloo {"President's"} Scholarship of Distinction</div>
-                    Ended with an average of 95% or higher in my final year of high school
-                  </div>
-                  <hr />
-                </motion.li>
-                <motion.li
-                  key={1}
-                  className="item"
-                  variants={timelineItem}
-                >
-                  <hr />
-                  <div className="timeline-middle">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="h-5 w-5">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                        clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="timeline-end mb-10">
-                    <time className="font-mono italic">June 2024</time>
-                    <div className="text-lg font-black">The Timothy Stiles Memorial Award</div>
-                    Awarded for outstanding mathematical achievement in Senior School at Strathcona-Tweedsmuir School
-                  </div>
-                  <hr />
-                </motion.li>
-                <motion.li
-                  key={2}
-                  className="item"
-                  variants={timelineItem}
-                >
-                  <hr />
-                  <div className="timeline-middle">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="h-5 w-5">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                        clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="timeline-start mb-10 md:text-end">
-                    <time className="font-mono italic">June 2024</time>
-                    <div className="text-lg font-black">The Dr. Dorothy Goldstein Memorial Prize for Senior School Science</div>
-                    Awarded for outstanding performance in science courses throughout Senior School at Strathcona-Tweedsmuir School
-                  </div>
-                  <hr />
-                </motion.li>
-                <motion.li
-                  key={3}
-                  className="item"
-                  variants={timelineItem}
-                >
-                  <hr />
-                  <div className="timeline-middle">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="h-5 w-5">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                        clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="timeline-end mb-10">
-                    <time className="font-mono italic">December 2023</time>
-                    <div className="text-lg font-black">Canadian Senior Mathematics Contest Certificate of Distinction</div>
-                    Ranked in the top 25% of all contestants in the 2023 Canadian Senior Mathematics Contest hosted by the University of Waterloo
-                  </div>
-                  <hr />
-                </motion.li>
-              </motion.ul>
+              <AwardsComponent awardsInView={awardsInView} />
             </div>
           </div>
         </div>
@@ -638,6 +222,6 @@ export default function Home() {
           </nav>
         </footer>
       </div>
-    </div>
+    </div >
   )
 }
