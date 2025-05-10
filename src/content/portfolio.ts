@@ -6,7 +6,10 @@ import {
 	FaPython,
 	FaReact,
 	FaUnity,
-} from "react-icons/fa";
+	FaGithub,
+	FaLinkedin,
+} from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
 import {
 	SiCplusplus,
@@ -253,5 +256,23 @@ export const Awards: Award[] = [
 			"Canadian Senior Mathematics Contest Certificate of Distinction",
 		description:
 			"Ranked in the top 25% of all contestants in the 2023 Canadian Senior Mathematics Contest hosted by the University of Waterloo",
+	},
+];
+
+export const Socials: Social[] = [
+	{
+		name: "GitHub",
+		destination: "https://github.com/chene0",
+		icon: FaGithub,
+	},
+	{
+		name: "LinkedIn",
+		destination: "https://www.linkedin.com/in/chene0/",
+		icon: FaLinkedin,
+	},
+	{
+		name: "Email",
+		destination: "mailto:e263chen@uwaterloo.ca",
+		icon: MdEmail,
 	},
 ];
