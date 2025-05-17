@@ -145,7 +145,7 @@ export default function Home() {
                 <div className='ml-8'>
                   <h2 className="text-5xl font-bold">About me</h2>
                   <p className="py-0 lg:py-6">
-                    {"I'm a student currently pursuing a degree in Computer Engineering at the University of Waterloo. I am passionate about software development and always seek opportunities to learn and grow. I'm currently seeking a co-op position for the Spring 2025 term."}
+                    {"I'm a student currently pursuing a degree in Computer Engineering at the University of Waterloo. I am passionate about software development and always seek opportunities to learn and grow. I'm currently seeking a co-op position for the Winter 2026 term."}
                     <br />
                     <br />
                     {"In my free time, I enjoy chatting with friends, working on personal projects, playing video games, and discovering new music."}
