@@ -14,6 +14,20 @@ declare global {
 		destination: string;
 	}
 
+	interface Experience {
+		role: string;
+		company: string;
+		location: string;
+		location_type: string; // onsite, remote, hybrid
+		company_link: string;
+		company_logo: string;
+		company_logo_alt: string;
+		start_date: Date;
+		end_date: Date | "Present";
+		description: string;
+		technologies: Skill[];
+	}
+
 	// Sections
 	interface Skill {
 		destination: string;

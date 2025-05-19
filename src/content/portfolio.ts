@@ -47,6 +47,65 @@ export const Sections: Section[] = [
 	},
 ];
 
+export const Experiences: Experience[] = [
+	{
+		role: "Full Stack Developer Intern",
+		company: "BTNX Inc.",
+		location: "Pickering, Ontario",
+		location_type: "Onsite",
+		company_link: "https://btnx.com/",
+		company_logo:
+			"https://media.licdn.com/dms/image/v2/C4D0BAQGD8sQuRlDrTg/company-logo_200_200/company-logo_200_200/0/1642354023779?e=1753315200&v=beta&t=2RIZ5hkYTTp2PRCD_8EfoWsw9bAO6izxDKMGgl7TC9w",
+		company_logo_alt: "BTNX Inc. Logo",
+		start_date: new Date(2025, 5),
+		end_date: new Date(2025, 7),
+		description: "Worked on developing and maintaining web applications.",
+		technologies: [],
+	},
+	{
+		role: "Organizer (Frontend Developer)",
+		company: "FormulaTech Hacks",
+		location: "Waterloo, Ontario",
+		location_type: "Remote",
+		company_link: "https://www.linkedin.com/company/formulatech-hacks/",
+		company_logo:
+			"https://media.licdn.com/dms/image/v2/D4E0BAQG8kwpskEMyog/company-logo_200_200/B4EZWN4kBeGYAM-/0/1741842170516?e=1753315200&v=beta&t=UBkMwsPXj5dVq6hMfHjFRXW6KQCbW3mX7_NXmXSjZTs",
+		company_logo_alt: "FormulaTech Hacks Logo",
+		start_date: new Date(2025, 3),
+		end_date: "Present",
+		description: "",
+		technologies: [],
+	},
+	{
+		role: "Firmware Developer",
+		company: "First Tech Challenge Robotics Team, Strathcona-Tweedsmuir School",
+		location: "Okotoks, Alberta",
+		location_type: "Onsite",
+		company_link: "https://www.firstroboticscanada.org/",
+		company_logo:
+			"https://firstroboticscanada.org/wp-content/uploads/2021/01/FIRST_HorzRGB_reverse-1536x401.png",
+		company_logo_alt: "First Tech Challenge Logo",
+		start_date: new Date(2022, 8),
+		end_date: new Date(2025, 4),
+		description:
+			"Developed and maintained the firmware for the robot using Java and Android Studio.",
+		technologies: [],
+	},
+	{
+		role: "Frontend Developer",
+		company: "Setford Consulting & Technology Ltd.",
+		location: "Calgary, Alberta",
+		location_type: "Onsite",
+		company_link: "",
+		company_logo: "",
+		company_logo_alt: "",
+		start_date: new Date(2023, 7),
+		end_date: new Date(2023, 9),
+		description: "",
+		technologies: [],
+	},
+];
+
 export const Skills: Skill[] = [
 	{
 		name: "NextJS",
