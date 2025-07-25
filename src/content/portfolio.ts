@@ -10,10 +10,11 @@ import {
 	FaLinkedin,
 } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
+import { RiAngularjsFill, RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
 import {
 	SiCplusplus,
 	SiCsharp,
+	SiDotnet,
 	SiExpress,
 	SiJira,
 	SiLatex,
@@ -118,6 +119,16 @@ export const Skills: Skill[] = [
 		icon: FaReact,
 	},
 	{
+		name: "AngularJS",
+		destination: "https://angularjs.org/",
+		icon: RiAngularjsFill,
+	},
+	{
+		name: ".NET",
+		destination: "https://dotnet.microsoft.com/en-us/",
+		icon: SiDotnet,
+	},
+	{
 		name: "Express",
 		destination: "https://expressjs.com/",
 		icon: SiExpress,
@@ -163,11 +174,6 @@ export const Skills: Skill[] = [
 		icon: FaUnity,
 	},
 	{
-		name: "LaTeX",
-		destination: "https://www.latex-project.org/",
-		icon: SiLatex,
-	},
-	{
 		name: "Docker",
 		destination: "https://www.docker.com/",
 		icon: FaDocker,
@@ -176,11 +182,6 @@ export const Skills: Skill[] = [
 		name: "AWS",
 		destination: "https://aws.amazon.com/",
 		icon: FaAws,
-	},
-	{
-		name: "Jira",
-		destination: "https://www.atlassian.com/software/jira",
-		icon: SiJira,
 	},
 ];
 

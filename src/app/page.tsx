@@ -108,7 +108,7 @@ export default function Home() {
               variants={item}
             >
               <div>
-                <h4 className="text-center">An aspiring full-stack developer</h4>
+                <h4 className="text-center">An aspiring software engineer</h4>
               </div>
             </motion.li>
             <motion.li
@@ -117,7 +117,7 @@ export default function Home() {
               variants={item}
             >
               <div className="text-center mt-24">
-                <a href='/Ethan%20Chen%20-%20Coop%20-%20Resume.pdf' target="_blank" rel="noopener noreferrer">Download my resume</a>
+                <a href='/Ethan_Chen_Coop_Resume.pdf' target="_blank" rel="noopener noreferrer">Download my resume</a>
               </div>
             </motion.li>
           </motion.ul>
