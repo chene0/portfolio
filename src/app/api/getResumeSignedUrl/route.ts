@@ -3,5 +3,9 @@ import getResumeSignedUrl from "@/utils/aws/getResumeSignedUrl"
 
 export async function GET(req: NextRequest) {
     const url = await getResumeSignedUrl();
-    return Response.json({ url });
+    return new Response(JSON.stringify({ url }), {
+        headers: {
+            'Cache-Control': 'no-store'
+        }
+    });
 }
