@@ -18,7 +18,7 @@ export const viewport: Viewport = {
 }
 
 async function openResume() {
-  const response = await fetch('/api/getResumeSignedUrl');
+  const response = await fetch('/api/getResumeSignedUrl', { method: 'POST' });
   const data = await response.json();
   window.open(data.url, '_blank');
 }
@@ -123,15 +123,19 @@ export default function Home() {
               variants={item}
             >
               <div className="text-center mt-24">
-                <a
-                  href="#"
-                  onClick={async e => {
-                    e.preventDefault();
-                    await openResume();
-                  }}
-                >
-                  Download my resume
-                </a>
+                <div className="text-center mt-24">
+                  <button
+                    type="button"
+                    onClick={async e => {
+                      // e.preventDefault();
+                      await openResume();
+                    }}
+                    className="bg-transparent border-none p-0 m-0 font-[500] underline cursor-pointer font-inherit"
+                    style={{ background: "none" }}
+                  >
+                    Download my resume
+                  </button>
+                </div>
               </div>
             </motion.li>
           </motion.ul>
