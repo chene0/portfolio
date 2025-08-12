@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import getResumeSignedUrl from "@/utils/aws/getResumeSignedUrl"
 
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
     const url = await getResumeSignedUrl();
     return new Response(JSON.stringify({ url }), {
         headers: {

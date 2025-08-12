@@ -18,7 +18,7 @@ export const viewport: Viewport = {
 }
 
 async function openResume() {
-  const response = await fetch('/api/getResumeSignedUrl');
+  const response = await fetch('/api/getResumeSignedUrl', { method: 'POST' });
   const data = await response.json();
   window.open(data.url, '_blank');
 }
