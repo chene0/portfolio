@@ -17,6 +17,12 @@ export const viewport: Viewport = {
   width: 'device-width'
 }
 
+async function openResume() {
+  const response = await fetch('/api/getResumeSignedUrl');
+  const data = await response.json();
+  window.open(data.url, '_blank');
+}
+
 export default function Home() {
   const item = {
     hidden: { y: 20, opacity: 0 },
@@ -117,7 +123,15 @@ export default function Home() {
               variants={item}
             >
               <div className="text-center mt-24">
-                <a href='/Ethan_Chen_Coop_Resume.pdf' target="_blank" rel="noopener noreferrer">Download my resume</a>
+                <a
+                  href="#"
+                  onClick={async e => {
+                    e.preventDefault();
+                    await openResume();
+                  }}
+                >
+                  Download my resume
+                </a>
               </div>
             </motion.li>
           </motion.ul>
