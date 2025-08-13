@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState } from 'react';
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 import Image from 'next/image';
 import type { Viewport } from 'next';
@@ -17,11 +17,6 @@ export const viewport: Viewport = {
   width: 'device-width'
 }
 
-async function openResume() {
-  const response = await fetch('/api/getResumeSignedUrl', { method: 'POST' });
-  const data = await response.json();
-  window.open(data.url, '_blank');
-}
 
 export default function Home() {
   const item = {
@@ -32,11 +27,25 @@ export default function Home() {
     }
   };
 
+  const [isLoadingResume, setIsLoadingResume] = useState(false);
+
   const awardsRef = useRef(null);
   const awardsInView = useInView(awardsRef, { once: true });
 
   const projectsRef = useRef(null);
   const projectsInView = useInView(projectsRef, { once: true });
+
+  const { scrollYProgress } = useScroll()
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 1125]);
+
+  async function openResume() {
+    setIsLoadingResume(true);
+    const response = await fetch('/api/getResumeSignedUrl', { method: 'POST' });
+    const data = await response.json();
+    setIsLoadingResume(false);
+    window.open(data.url, '_blank');
+  }
 
   const animateBg = {
     hidden: { pathLength: 0, opacity: 0 },
@@ -53,9 +62,6 @@ export default function Home() {
     }
   }
 
-  const { scrollYProgress } = useScroll()
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 1125]);
 
   return (
     <div id='top' className='bg-neutral relative'>
@@ -127,13 +133,33 @@ export default function Home() {
                   <button
                     type="button"
                     onClick={async e => {
-                      // e.preventDefault();
                       await openResume();
                     }}
                     className="bg-transparent border-none p-0 m-0 font-[500] underline cursor-pointer font-inherit"
                     style={{ background: "none" }}
                   >
-                    Download my resume
+                    <AnimatePresence mode="wait">
+                      {isLoadingResume ? (
+                        <motion.span
+                          key="loading"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          transition={{ duration: 0.1 }}
+                          className="loading loading-infinity loading-xl w-[3rem]"
+                        />
+                      ) : (
+                        <motion.span
+                          key="text"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          transition={{ duration: 0.1 }}
+                        >
+                          Download my resume
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   </button>
                 </div>
               </div>
