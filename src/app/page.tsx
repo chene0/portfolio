@@ -40,11 +40,17 @@ export default function Home() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 1125]);
 
   async function openResume() {
+    const win = window.open('', '_blank');
     setIsLoadingResume(true);
     const response = await fetch('/api/getResumeSignedUrl', { method: 'POST' });
     const data = await response.json();
     setIsLoadingResume(false);
-    window.open(data.url, '_blank');
+    if (win) {
+      win.location.href = data.url;
+    } else {
+      // Optionally, handle the case where the popup was blocked
+      alert('Popup was blocked. Please allow popups for this site.');
+    }
   }
 
   const animateBg = {
