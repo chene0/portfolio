@@ -10,7 +10,11 @@ import {
 	FaLinkedin,
 } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { RiAngularjsFill, RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
+import {
+	RiAngularjsFill,
+	RiNextjsLine,
+	RiTailwindCssFill,
+} from "react-icons/ri";
 import {
 	SiCplusplus,
 	SiCsharp,
@@ -25,10 +29,6 @@ export const Sections: Section[] = [
 	{
 		title: "Welcome",
 		destination: "top",
-	},
-	{
-		title: "About me",
-		destination: "about",
 	},
 	{
 		title: "Skills",
