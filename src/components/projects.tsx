@@ -40,7 +40,7 @@ for (const project of Projects) {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{project.name}</h2>
-                <p>{project.description}</p>
+                <p><small>{project.description}</small></p>
                 <div className="card-actions justify-end">
                     {...link_elements}
                 </div>
