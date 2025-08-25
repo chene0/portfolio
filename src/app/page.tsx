@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useId } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 import Image from 'next/image';
@@ -11,6 +11,8 @@ import { ProjectsComponent } from '@/components/projects';
 import { container } from "@/utils/constants";
 import { AwardsComponent } from '@/components/awards';
 import { SocialsComponent } from '@/components/socials';
+import ExperienceCollection from '@/components/experiences/experiencecollection';
+import { Experiences, Extracurriculars } from '@/content/portfolio';
 
 export const viewport: Viewport = {
   initialScale: 1,
@@ -32,6 +34,8 @@ export default function Home() {
 
   const projectsRef = useRef(null);
   const projectsInView = useInView(projectsRef, { once: true });
+
+  const experiencesId = useId();
 
   async function openResume() {
     const win = window.open('', '_blank');
@@ -71,7 +75,7 @@ export default function Home() {
                 alt='Portrait'
                 width={309}
                 height={469}
-                className="max-w-sm rounded-full shadow-2xl mb-8" />
+                className="max-w-2xs sm:max-w-sm rounded-full shadow-2xl mb-8" />
             </motion.div>
             <div className="text-center lg:text-left lg:ml-16">
               <h1 className="text-4xl font-bold text-shadow-lg mb-2 lg:mb-2">Ethan Chen</h1>
@@ -97,6 +101,22 @@ export default function Home() {
           <div className="mx-10 lg:mx-40 my-16">
             <h2>Skills</h2>
             <SkillsComponent />
+          </div>
+        </div>
+
+        {/* EXPERIENCES */}
+        <div id={experiencesId}>
+          <div className="mx-10 lg:mx-40 my-16">
+            <h2>Experiences</h2>
+            <ExperienceCollection experiences={Experiences} />
+          </div>
+        </div>
+
+        {/* EXTRACURRICULARS */}
+        <div>
+          <div className="mx-10 lg:mx-40 my-16">
+            <h2>Extracurriculars</h2>
+            <ExperienceCollection experiences={Extracurriculars} />
           </div>
         </div>
 
