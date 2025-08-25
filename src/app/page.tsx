@@ -21,21 +21,11 @@ export const viewport: Viewport = {
 
 
 export default function Home() {
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
-
   const awardsRef = useRef(null);
   const awardsInView = useInView(awardsRef, { once: true });
 
   const projectsRef = useRef(null);
   const projectsInView = useInView(projectsRef, { once: true });
-
-  const experiencesId = useId();
 
   async function openResume() {
     const win = window.open('', '_blank');
@@ -105,7 +95,7 @@ export default function Home() {
         </div>
 
         {/* EXPERIENCES */}
-        <div id={experiencesId}>
+        <div id='experiences'>
           <div className="mx-10 lg:mx-40 my-16">
             <h2>Experiences</h2>
             <ExperienceCollection experiences={Experiences} />
@@ -113,7 +103,7 @@ export default function Home() {
         </div>
 
         {/* EXTRACURRICULARS */}
-        <div>
+        <div id='extracurriculars'>
           <div className="mx-10 lg:mx-40 my-16">
             <h2>Extracurriculars</h2>
             <ExperienceCollection experiences={Extracurriculars} />

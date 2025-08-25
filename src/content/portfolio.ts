@@ -33,16 +33,20 @@ export const Sections: Section[] = [
 		destination: "skills",
 	},
 	{
+		title: "Experience",
+		destination: "experiences",
+	},
+	{
+		title: "Extracurriculars",
+		destination: "extracurriculars",
+	},
+	{
 		title: "Projects",
 		destination: "projects",
 	},
 	{
 		title: "Awards",
 		destination: "awards",
-	},
-	{
-		title: "Connect",
-		destination: "footer",
 	},
 ];
 
