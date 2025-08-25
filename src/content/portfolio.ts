@@ -1,4 +1,5 @@
 import { BiLogoPostgresql } from "react-icons/bi";
+import { DiMsqlServer } from "react-icons/di";
 import {
 	FaAws,
 	FaDocker,
@@ -10,14 +11,16 @@ import {
 	FaLinkedin,
 } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { RiAngularjsFill, RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
+import {
+	RiAngularjsFill,
+	RiNextjsLine,
+	RiTailwindCssFill,
+} from "react-icons/ri";
 import {
 	SiCplusplus,
 	SiCsharp,
 	SiDotnet,
 	SiExpress,
-	SiJira,
-	SiLatex,
 	SiMongodb,
 } from "react-icons/si";
 
@@ -27,12 +30,16 @@ export const Sections: Section[] = [
 		destination: "top",
 	},
 	{
-		title: "About me",
-		destination: "about",
-	},
-	{
 		title: "Skills",
 		destination: "skills",
+	},
+	{
+		title: "Experience",
+		destination: "experiences",
+	},
+	{
+		title: "Extracurriculars",
+		destination: "extracurriculars",
 	},
 	{
 		title: "Projects",
@@ -42,146 +49,180 @@ export const Sections: Section[] = [
 		title: "Awards",
 		destination: "awards",
 	},
-	{
-		title: "Connect",
-		destination: "footer",
-	},
+];
+
+// Individual skill variables
+export const SKILL_NEXTJS: Skill = {
+	name: "NextJS",
+	destination: "https://nextjs.org/",
+	icon: RiNextjsLine,
+};
+
+export const SKILL_REACT: Skill = {
+	name: "React",
+	destination: "https://react.dev/",
+	icon: FaReact,
+};
+
+export const SKILL_ANGULARJS: Skill = {
+	name: "AngularJS",
+	destination: "https://angularjs.org/",
+	icon: RiAngularjsFill,
+};
+
+export const SKILL_DOTNET: Skill = {
+	name: ".NET",
+	destination: "https://dotnet.microsoft.com/en-us/",
+	icon: SiDotnet,
+};
+
+export const SKILL_EXPRESS: Skill = {
+	name: "Express",
+	destination: "https://expressjs.com/",
+	icon: SiExpress,
+};
+
+export const SKILL_TAILWIND: Skill = {
+	name: "Tailwind",
+	destination: "https://tailwindcss.com/",
+	icon: RiTailwindCssFill,
+};
+
+export const SKILL_POSTGRES: Skill = {
+	name: "Postgres",
+	destination: "https://www.postgresql.org/",
+	icon: BiLogoPostgresql,
+};
+
+export const SKILL_SQLSERVER: Skill = {
+	name: "SQL Server",
+	destination: "https://www.microsoft.com/en-us/sql-server",
+	icon: DiMsqlServer,
+};
+
+export const SKILL_MONGODB: Skill = {
+	name: "MongoDB",
+	destination: "https://www.mongodb.com/",
+	icon: SiMongodb,
+};
+
+export const SKILL_PYTHON: Skill = {
+	name: "Python",
+	destination: "https://www.python.org/",
+	icon: FaPython,
+};
+
+export const SKILL_CSHARP: Skill = {
+	name: "C#",
+	destination: "https://dotnet.microsoft.com/en-us/languages/csharp",
+	icon: SiCsharp,
+};
+
+export const SKILL_CPP: Skill = {
+	name: "C++",
+	destination: "https://isocpp.org/",
+	icon: SiCplusplus,
+};
+
+export const SKILL_JAVA: Skill = {
+	name: "Java",
+	destination: "https://www.java.com/en/",
+	icon: FaJava,
+};
+
+export const SKILL_UNITY: Skill = {
+	name: "Unity3D",
+	destination: "https://unity.com/",
+	icon: FaUnity,
+};
+
+export const SKILL_DOCKER: Skill = {
+	name: "Docker",
+	destination: "https://www.docker.com/",
+	icon: FaDocker,
+};
+
+export const SKILL_AWS: Skill = {
+	name: "AWS",
+	destination: "https://aws.amazon.com/",
+	icon: FaAws,
+};
+
+// Skills array referencing the variables
+export const Skills: Skill[] = [
+	SKILL_NEXTJS,
+	SKILL_REACT,
+	SKILL_ANGULARJS,
+	SKILL_DOTNET,
+	SKILL_EXPRESS,
+	SKILL_TAILWIND,
+	SKILL_POSTGRES,
+	SKILL_SQLSERVER,
+	SKILL_MONGODB,
+	SKILL_PYTHON,
+	SKILL_CSHARP,
+	SKILL_CPP,
+	SKILL_JAVA,
+	SKILL_UNITY,
+	SKILL_DOCKER,
+	SKILL_AWS,
 ];
 
 export const Experiences: Experience[] = [
 	{
-		role: "Full Stack Developer Intern",
+		key: 0,
+		role: "Full Stack Developer Co-op",
 		company: "BTNX Inc.",
 		location: "Pickering, Ontario",
 		location_type: "Onsite",
 		company_link: "https://btnx.com/",
-		company_logo:
-			"https://media.licdn.com/dms/image/v2/C4D0BAQGD8sQuRlDrTg/company-logo_200_200/company-logo_200_200/0/1642354023779?e=1753315200&v=beta&t=2RIZ5hkYTTp2PRCD_8EfoWsw9bAO6izxDKMGgl7TC9w",
+		company_logo: "/experience_logos/btnx.jpg",
 		company_logo_alt: "BTNX Inc. Logo",
 		start_date: new Date(2025, 5),
 		end_date: new Date(2025, 7),
-		description: "Worked on developing and maintaining web applications.",
+		technologies: [],
+	},
+];
+
+export const Extracurriculars: Experience[] = [
+	{
+		key: 0,
+		role: "Project Developer",
+		company: "UW Blueprint",
+		location: "Waterloo, Ontario",
+		location_type: "Hybrid",
+		company_link: "https://uwblueprint.org/",
+		company_logo: "/extracurricular_logos/uwbp.jpg",
+		company_logo_alt: "UW Blueprint Logo",
+		start_date: new Date(2025, 8),
+		end_date: "Incoming",
 		technologies: [],
 	},
 	{
+		key: 1,
 		role: "Organizer (Frontend Developer)",
 		company: "FormulaTech Hacks",
 		location: "Waterloo, Ontario",
 		location_type: "Remote",
 		company_link: "https://www.linkedin.com/company/formulatech-hacks/",
-		company_logo:
-			"https://media.licdn.com/dms/image/v2/D4E0BAQG8kwpskEMyog/company-logo_200_200/B4EZWN4kBeGYAM-/0/1741842170516?e=1753315200&v=beta&t=UBkMwsPXj5dVq6hMfHjFRXW6KQCbW3mX7_NXmXSjZTs",
+		company_logo: "/extracurricular_logos/fthacks.jpg",
 		company_logo_alt: "FormulaTech Hacks Logo",
 		start_date: new Date(2025, 3),
 		end_date: "Present",
-		description: "",
 		technologies: [],
 	},
 	{
+		key: 2,
 		role: "Firmware Developer",
 		company: "First Tech Challenge Robotics Team, Strathcona-Tweedsmuir School",
 		location: "Okotoks, Alberta",
 		location_type: "Onsite",
 		company_link: "https://www.firstroboticscanada.org/",
-		company_logo:
-			"https://firstroboticscanada.org/wp-content/uploads/2021/01/FIRST_HorzRGB_reverse-1536x401.png",
+		company_logo: "/extracurricular_logos/ftc.jpg",
 		company_logo_alt: "First Tech Challenge Logo",
 		start_date: new Date(2022, 8),
 		end_date: new Date(2025, 4),
-		description:
-			"Developed and maintained the firmware for the robot using Java and Android Studio.",
 		technologies: [],
-	},
-	{
-		role: "Frontend Developer",
-		company: "Setford Consulting & Technology Ltd.",
-		location: "Calgary, Alberta",
-		location_type: "Onsite",
-		company_link: "",
-		company_logo: "",
-		company_logo_alt: "",
-		start_date: new Date(2023, 7),
-		end_date: new Date(2023, 9),
-		description: "",
-		technologies: [],
-	},
-];
-
-export const Skills: Skill[] = [
-	{
-		name: "NextJS",
-		destination: "https://nextjs.org/",
-		icon: RiNextjsLine,
-	},
-	{
-		name: "React",
-		destination: "https://react.dev/",
-		icon: FaReact,
-	},
-	{
-		name: "AngularJS",
-		destination: "https://angularjs.org/",
-		icon: RiAngularjsFill,
-	},
-	{
-		name: ".NET",
-		destination: "https://dotnet.microsoft.com/en-us/",
-		icon: SiDotnet,
-	},
-	{
-		name: "Express",
-		destination: "https://expressjs.com/",
-		icon: SiExpress,
-	},
-	{
-		name: "Tailwind",
-		destination: "https://tailwindcss.com/",
-		icon: RiTailwindCssFill,
-	},
-	{
-		name: "Postgres",
-		destination: "https://www.postgresql.org/",
-		icon: BiLogoPostgresql,
-	},
-	{
-		name: "MongoDB",
-		destination: "https://www.mongodb.com/",
-		icon: SiMongodb,
-	},
-	{
-		name: "Python",
-		destination: "https://www.python.org/",
-		icon: FaPython,
-	},
-	{
-		name: "C#",
-		destination: "https://dotnet.microsoft.com/en-us/languages/csharp",
-		icon: SiCsharp,
-	},
-	{
-		name: "C++",
-		destination: "https://isocpp.org/",
-		icon: SiCplusplus,
-	},
-	{
-		name: "Java",
-		destination: "https://www.java.com/en/",
-		icon: FaJava,
-	},
-	{
-		name: "Unity3D",
-		destination: "https://unity.com/",
-		icon: FaUnity,
-	},
-	{
-		name: "Docker",
-		destination: "https://www.docker.com/",
-		icon: FaDocker,
-	},
-	{
-		name: "AWS",
-		destination: "https://aws.amazon.com/",
-		icon: FaAws,
 	},
 ];
 

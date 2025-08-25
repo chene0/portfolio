@@ -14,7 +14,15 @@ declare global {
 		destination: string;
 	}
 
+	// Sections
+	interface Skill {
+		destination: string;
+		name: string;
+		icon: IconType;
+	}
+
 	interface Experience {
+		key: number;
 		role: string;
 		company: string;
 		location: string;
@@ -23,16 +31,9 @@ declare global {
 		company_logo: string;
 		company_logo_alt: string;
 		start_date: Date;
-		end_date: Date | "Present";
-		description: string;
+		end_date: Date | "Present" | "Incoming";
+		description?: string;
 		technologies: Skill[];
-	}
-
-	// Sections
-	interface Skill {
-		destination: string;
-		name: string;
-		icon: IconType;
 	}
 
 	interface Project {

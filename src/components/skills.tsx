@@ -3,16 +3,21 @@ import { Skills } from "@/content/portfolio";
 const skills_element_array: React.JSX.Element[] = [];
 for (const skill of Skills) {
     skills_element_array.push(
-        <a href={skill.destination} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-base-100 shadow-xl no-underline">
-            <h2 className='text-center'>{skill.name}</h2>
-            <skill.icon className='mx-auto my-4' size={'6rem'} />
+        <a
+            href={skill.destination}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="badge badge-lg badge-outline flex flex-row items-center gap-2 px-4 py-3 no-underline"
+        >
+            <skill.icon className="mx-auto" />
+            <span className="text-center text-base font-medium">{skill.name}</span>
         </a>
     );
 }
 
 export function SkillsComponent() {
     return (
-        <div className='mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+        <div className="mx-auto flex flex-wrap gap-3 justify-center items-center">
             {...skills_element_array}
         </div>
     );

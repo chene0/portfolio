@@ -4,7 +4,7 @@ import { Link } from 'react-scroll';
 const res: React.JSX.Element[] = [];
 for (const section of Sections) {
     res.push(
-        <li><Link to={section.destination} smooth>{section.title}</Link></li>
+        <li><Link to={section.destination} smooth offset={-68}>{section.title}</Link></li>
     );
 }
 
