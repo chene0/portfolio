@@ -1,4 +1,5 @@
 import { BiLogoPostgresql } from "react-icons/bi";
+import { DiMsqlServer } from "react-icons/di";
 import {
 	FaAws,
 	FaDocker,
@@ -93,6 +94,12 @@ export const SKILL_POSTGRES: Skill = {
 	icon: BiLogoPostgresql,
 };
 
+export const SKILL_SQLSERVER: Skill = {
+	name: "SQL Server",
+	destination: "https://www.microsoft.com/en-us/sql-server",
+	icon: DiMsqlServer,
+};
+
 export const SKILL_MONGODB: Skill = {
 	name: "MongoDB",
 	destination: "https://www.mongodb.com/",
@@ -150,6 +157,7 @@ export const Skills: Skill[] = [
 	SKILL_EXPRESS,
 	SKILL_TAILWIND,
 	SKILL_POSTGRES,
+	SKILL_SQLSERVER,
 	SKILL_MONGODB,
 	SKILL_PYTHON,
 	SKILL_CSHARP,
