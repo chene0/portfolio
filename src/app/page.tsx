@@ -41,15 +41,15 @@ export default function Home() {
 
 
   return (
-    <div id='top' className='bg-neutral relative'>
+    <div id='top' className='bg-base-100 relative'>
       {/* NAVBAR */}
-      <div className="sticky top-0 z-50 navbar bg-base-100">
+      <div className="sticky top-0 z-20 navbar bg-base-100 shadow-lg">
         <MobileNavbar />
         <Navbar />
       </div>
 
 
-      <div className="prose lg:prose-xl bg-neutral min-w-full">
+      <div className="prose lg:prose-xl bg-base-100 min-w-full">
         {/* INTRODUCTION */}
         <div className="mb-16 mx-10 lg:mx-40 relative z-10" style={{ overflow: 'hidden' }}>
           <div className="flex flex-col lg:flex-row items-center justify-center">
@@ -130,7 +130,7 @@ export default function Home() {
         </div>
 
         {/* CONTACT */}
-        <footer id='footer' className="footer bg-neutral text-neutral-content items-center px-40 py-4">
+        <footer id='footer' className="footer bg-base-100 text-base-content items-center px-40 py-4">
           <aside className="grid-flow-col items-center">
             <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
           </aside>
