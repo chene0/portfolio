@@ -130,7 +130,7 @@ export default function Home() {
         </div>
 
         {/* CONTACT */}
-        <footer id='footer' className="footer bg-base-100 text-base-content items-center px-40 py-4">
+        <footer id='footer' className="footer bg-base-100 text-base-content items-center px-10 lg:px-40 py-4">
           <aside className="grid-flow-col items-center">
             <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
           </aside>

@@ -27,9 +27,8 @@ for (const project of Projects) {
     }
 
     projects_element_array.push(
-        <motion.li className="card bg-base-100 w-80 md:88 xl:w-96 shadow-xl item"
+        <li className="card bg-base-100 w-full shadow-xl item"
             key={key}
-            variants={projectsItem}
         >
             <figure>
                 <Image
@@ -45,7 +44,7 @@ for (const project of Projects) {
                     {...link_elements}
                 </div>
             </div>
-        </motion.li>
+        </li>
     );
 
     ++key;
@@ -57,12 +56,8 @@ interface ProjectsComponentProps {
 
 export function ProjectsComponent({ projectsInView }: ProjectsComponentProps) {
     return (
-        <motion.ul className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 not-prose container list-none'
-            variants={container}
-            initial="hidden"
-            animate={projectsInView ? "visible" : "hidden"}
-        >
+        <ul className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 not-prose list-none'>
             {...projects_element_array}
-        </motion.ul>
+        </ul>
     );
 }

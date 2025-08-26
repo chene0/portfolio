@@ -8,17 +8,13 @@ interface AwardsComponentProp {
 
 export function AwardsComponent({ awardsInView }: AwardsComponentProp) {
     return (
-        <motion.ul
-            className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical container list-none"
-            variants={container}
-            initial="hidden"
-            animate={awardsInView ? "visible" : "hidden"}
+        <ul
+            className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical list-none"
         >
             {Awards.map((award, index) => (
-                <motion.li
+                <li
                     key={award.key}
                     className="item"
-                    variants={timelineItem}
                 >
                     <div className="timeline-middle">
                         <svg
@@ -39,9 +35,9 @@ export function AwardsComponent({ awardsInView }: AwardsComponentProp) {
                         {award.description}
                     </div>
                     <hr />
-                </motion.li>
+                </li>
             ))}
-        </motion.ul>
+        </ul>
     );
 
 }
