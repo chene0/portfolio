@@ -15,11 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dim">
+    <html lang="en" data-theme="pastel">
       <body className="bg-base-100 text-base-content min-w-full max-w-full">
         <label className="swap swap-rotate fixed right-3 top-3 z-50">
           {/* this hidden checkbox controls the state */}
-          <input type="checkbox" className="theme-controller" value="pastel" />
+          <input type="checkbox" className="theme-controller" value="dim" />
 
           {/* sun icon */}
           <svg
