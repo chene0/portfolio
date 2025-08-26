@@ -21,8 +21,8 @@ for (const project of Projects) {
                 target="_blank"
                 href={link.destination}
                 rel="noopener noreferrer"
-                className="btn btn-primary mx-1"
-            >{link.label}</a>
+                className="mx-1"
+            ><link.icon size={'1.5rem'} /></a>
         );
     }
 

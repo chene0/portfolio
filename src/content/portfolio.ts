@@ -9,6 +9,8 @@ import {
 	FaUnity,
 	FaGithub,
 	FaLinkedin,
+	FaGlobe,
+	FaDev,
 } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import {
@@ -236,16 +238,19 @@ export const Projects: Project[] = [
 			"A web app dedicated to offering gamified isolated training of public speaking and social skills at the user's convenience. Developed at GeeseHacks 2025 with Evan He, Rijul Chaddha, and Lawrence Zou.",
 		links: [
 			{
-				label: "Website",
+				name: "Website",
 				destination: "https://geese-hacks-project.vercel.app/",
+				icon: FaGlobe,
 			},
 			{
-				label: "Devpost",
+				name: "Devpost",
 				destination: "https://devpost.com/software/geesetalk",
+				icon: FaDev,
 			},
 			{
-				label: "Repository",
+				name: "Repository",
 				destination: "https://github.com/RijulChaddha9504/GeeseHacks",
+				icon: FaGithub,
 			},
 		],
 	},
@@ -266,8 +271,9 @@ export const Projects: Project[] = [
 		description: "Built with NextJS, React, and Tailwind.",
 		links: [
 			{
-				label: "Repository",
+				name: "Repository",
 				destination: "https://github.com/chene0/portfolio",
+				icon: FaGithub,
 			},
 		],
 	},
@@ -279,8 +285,16 @@ export const Projects: Project[] = [
 		description:
 			"Work through problem sets with this assistant that will narrow your focus to your areas of weakness.",
 		links: [
-			{ label: "Website", destination: "https://vance-phi.vercel.app/" },
-			{ label: "Repository", destination: "https://github.com/chene0/vance" },
+			{
+				name: "Website",
+				destination: "https://vance-phi.vercel.app/",
+				icon: FaGlobe,
+			},
+			{
+				name: "Repository",
+				destination: "https://github.com/chene0/vance",
+				icon: FaGithub,
+			},
 		],
 	},
 	{
@@ -291,8 +305,9 @@ export const Projects: Project[] = [
 		description: "Interact with Todoist right from your desktop.",
 		links: [
 			{
-				label: "Repository",
+				name: "Repository",
 				destination: "https://github.com/chene0/focarapp",
+				icon: FaGithub,
 			},
 		],
 	},
@@ -304,10 +319,15 @@ export const Projects: Project[] = [
 		description:
 			"Produce mathematical notation in real-time. Developed at Hack the North 2022 with Salman Youssef and Pravin Lohani.",
 		links: [
-			{ label: "Devpost", destination: "https://devpost.com/software/lon" },
 			{
-				label: "Repository",
+				name: "Devpost",
+				destination: "https://devpost.com/software/lon",
+				icon: FaDev,
+			},
+			{
+				name: "Repository",
 				destination: "https://github.com/chene0/HackTheNorth",
+				icon: FaGithub,
 			},
 		],
 	},
@@ -320,8 +340,9 @@ export const Projects: Project[] = [
 			"Rely on your audio and attentiveness to thrive in this eerie shooter.",
 		links: [
 			{
-				label: "Repository",
+				name: "Repository",
 				destination: "https://github.com/chene0/personal-project",
+				icon: FaGithub,
 			},
 		],
 	},
@@ -360,7 +381,7 @@ export const Awards: Award[] = [
 	},
 ];
 
-export const Socials: Social[] = [
+export const Socials: IconLink[] = [
 	{
 		name: "GitHub",
 		destination: "https://github.com/chene0",

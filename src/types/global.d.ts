@@ -42,7 +42,7 @@ declare global {
 		thumbnail_alt: string;
 		name: string;
 		description: string;
-		links: Hyperlink[];
+		links: IconLink[];
 	}
 
 	interface Award {
@@ -52,7 +52,7 @@ declare global {
 		description: string;
 	}
 
-	interface Social {
+	interface IconLink {
 		name?: string;
 		destination: string;
 		icon: IconType;
