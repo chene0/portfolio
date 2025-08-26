@@ -31,11 +31,14 @@ for (const project of Projects) {
             key={key}
         >
             <figure>
-                <Image
-                    src={project.thumbnail}
-                    width={500}
-                    height={500}
-                    alt={project.thumbnail_alt} />
+                <div className="w-full aspect-[16/9] relative"> {/* change 4/3 to 1/1 or 16/9 as needed */}
+                    <Image
+                        src={project.thumbnail}
+                        alt={project.thumbnail_alt}
+                        fill
+                        className="object-cover"
+                    />
+                </div>
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{project.name}</h2>

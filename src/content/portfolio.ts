@@ -231,6 +231,21 @@ export const Extracurriculars: Experience[] = [
 export const Projects: Project[] = [
 	{
 		key: 0,
+		thumbnail: "/terrahacks2025.png",
+		thumbnail_alt: "TerraHacks 2025",
+		name: "PainAR",
+		description:
+			"React Native app to mark pain locations and auto-generate pre-visit summaries, with a LangChain/OpenAI overlay chatbot for context-aware medical responses. Developed at TerraHacks 2025 with Achita Anantachina, Emilee Chen, and Raymond Chen.",
+		links: [
+			{
+				name: "Devpost",
+				destination: "https://devpost.com/software/painar",
+				icon: FaDev,
+			},
+		],
+	},
+	{
+		key: 1,
 		thumbnail: "/geesehacks2025.png",
 		thumbnail_alt: "GeeseHacks 2025",
 		name: "GeeseTalk",
@@ -255,7 +270,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		key: 1,
+		key: 2,
 		thumbnail: "/ece198.png",
 		thumbnail_alt: "ECE 198",
 		name: "Home Power Monitoring Device",
@@ -264,7 +279,7 @@ export const Projects: Project[] = [
 		links: [],
 	},
 	{
-		key: 2,
+		key: 3,
 		thumbnail: "/portfolio.png",
 		thumbnail_alt: "Portfolio",
 		name: "This portfolio!",
@@ -278,7 +293,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		key: 3,
+		key: 4,
 		thumbnail: "/vance.png",
 		thumbnail_alt: "Vance",
 		name: "Vance",
@@ -298,7 +313,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		key: 4,
+		key: 5,
 		thumbnail: "/focar.png",
 		thumbnail_alt: "Focar",
 		name: "Focar",
@@ -312,7 +327,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		key: 5,
+		key: 6,
 		thumbnail: "/pilon.jpg",
 		thumbnail_alt: "Pilon",
 		name: "Pilon",
@@ -332,7 +347,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		key: 6,
+		key: 7,
 		thumbnail: "/fps.PNG",
 		thumbnail_alt: "First Person Shooter",
 		name: "Untitled First Person Shooter",
