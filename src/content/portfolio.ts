@@ -197,7 +197,7 @@ export const Extracurriculars: Experience[] = [
 		company_logo: "/extracurricular_logos/uwbp.jpg",
 		company_logo_alt: "UW Blueprint Logo",
 		start_date: new Date(2025, 8),
-		end_date: "Incoming",
+		end_date: "Present",
 		technologies: [],
 	},
 	{
