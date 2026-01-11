@@ -3,23 +3,36 @@ import getResumeSignedUrl from "@/utils/aws/getResumeSignedUrl"
 
 export async function POST(req: NextRequest) {
     // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/457ef73b-bdc3-441f-a1fb-e5ee684845a5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'route.ts:6',message:'API route entry',data:{method:req.method,url:req.url},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'D'})}).catch(()=>{});
+    console.log('[DEBUG] API route called:', {
+        method: req.method,
+        url: req.url,
+        timestamp: new Date().toISOString()
+    });
     // #endregion
     
     try {
         const url = await getResumeSignedUrl();
         // #region agent log
-        fetch('http://127.0.0.1:7243/ingest/457ef73b-bdc3-441f-a1fb-e5ee684845a5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'route.ts:13',message:'Success: returning URL',data:{urlLength:url?.length},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A'})}).catch(()=>{});
+        console.log('[DEBUG] Success, returning URL to client');
         // #endregion
         return new Response(JSON.stringify({ url }), {
             headers: {
                 'Cache-Control': 'no-store'
             }
         });
-    } catch (error) {
+    } catch (error: any) {
         // #region agent log
-        fetch('http://127.0.0.1:7243/ingest/457ef73b-bdc3-441f-a1fb-e5ee684845a5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'route.ts:24',message:'Error caught in route',data:{errorName:error?.constructor?.name,errorMessage:error?.message},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,B,C,D,E'})}).catch(()=>{});
+        console.error('[DEBUG] Error in route handler:', {
+            errorName: error?.constructor?.name,
+            errorMessage: error?.message,
+            timestamp: new Date().toISOString()
+        });
         // #endregion
-        throw error;
+        return new Response(JSON.stringify({ error: error?.message || 'Unknown error' }), {
+            status: 500,
+            headers: {
+                'Cache-Control': 'no-store'
+            }
+        });
     }
 }
