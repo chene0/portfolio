@@ -13,7 +13,7 @@ export function AwardsComponent({ awardsInView }: AwardsComponentProp) {
         >
             {Awards.map((award, index) => (
                 <li
-                    key={award.key}
+                    key={index}
                     className="item"
                 >
                     <div className="timeline-middle">

@@ -11,6 +11,7 @@ import {
   FaLinkedin,
   FaGlobe,
   FaDev,
+  FaYoutube,
 } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import {
@@ -212,7 +213,6 @@ export const Skills: Skill[] = [
 
 export const Experiences: Experience[] = [
   {
-    key: 0,
     role: "Software Engineer Intern",
     company: "Pratt & Whitney",
     location: "Mississauga, Ontario",
@@ -225,7 +225,6 @@ export const Experiences: Experience[] = [
     technologies: [],
   },
   {
-    key: 1,
     role: "Full Stack Developer Co-op",
     company: "BTNX Inc.",
     location: "Pickering, Ontario",
@@ -241,7 +240,6 @@ export const Experiences: Experience[] = [
 
 export const Extracurriculars: Experience[] = [
   {
-    key: 0,
     role: "Project Developer",
     company: "UW Blueprint",
     location: "Waterloo, Ontario",
@@ -254,7 +252,6 @@ export const Extracurriculars: Experience[] = [
     technologies: [],
   },
   {
-    key: 1,
     role: "Organizer (Frontend Developer)",
     company: "FormulaTech Hacks",
     location: "Waterloo, Ontario",
@@ -267,7 +264,6 @@ export const Extracurriculars: Experience[] = [
     technologies: [],
   },
   {
-    key: 2,
     role: "Firmware Developer",
     company: "First Tech Challenge Robotics Team, Strathcona-Tweedsmuir School",
     location: "Okotoks, Alberta",
@@ -283,7 +279,47 @@ export const Extracurriculars: Experience[] = [
 
 export const Projects: Project[] = [
   {
-    key: 0,
+    thumbnail: "/uofthacks13.jpg",
+    thumbnail_alt: "UofTHacks 13",
+    name: "flashbang",
+    description: "Don't be the face of procrastination. Developed at UofTHacks 13 with Oliver Huang, Marcus Chuong, and Colin Wang.",
+    links: [
+      {
+        name: "Devpost",
+        destination: "https://devpost.com/software/flashbang-0k4ebo",
+        icon: FaDev,
+      },
+      {
+        name: "Repository",
+        destination: "https://github.com/chene0/uofthacks13",
+        icon: FaGithub,
+      },
+      {
+        name: "Demo",
+        destination: "https://www.youtube.com/watch?v=QTjzPNiiu8w",
+        icon: FaYoutube,
+      },
+    ]
+  },
+  {
+    thumbnail: "/hackthevalley_x.png",
+    thumbnail_alt: "Hack the Valley X",
+    name: "Gym Scroller",
+    description: "When you don't have a gym buddy shouting at you for \"just one more\" rep, there really isn't a reason to finish that last rep. So why not solve this issue by scrolling reels? Developed at Hack the Valley X with Achita Anantachina, Emilee Chen, and Raymond Chen.",
+    links: [
+      {
+        name: "Devpost",
+        destination: "https://devpost.com/software/gym-scroller",
+        icon: FaDev,
+      },
+      {
+        name: "Repository",
+        destination: "https://github.com/achitaan/Gym-Scroller",
+        icon: FaGithub,
+      },
+    ],
+  },
+  {
     thumbnail: "/terrahacks2025.png",
     thumbnail_alt: "TerraHacks 2025",
     name: "PainAR",
@@ -298,7 +334,6 @@ export const Projects: Project[] = [
     ],
   },
   {
-    key: 1,
     thumbnail: "/geesehacks2025.png",
     thumbnail_alt: "GeeseHacks 2025",
     name: "GeeseTalk",
@@ -323,7 +358,6 @@ export const Projects: Project[] = [
     ],
   },
   {
-    key: 2,
     thumbnail: "/ece198.png",
     thumbnail_alt: "ECE 198",
     name: "Home Power Monitoring Device",
@@ -332,7 +366,6 @@ export const Projects: Project[] = [
     links: [],
   },
   {
-    key: 3,
     thumbnail: "/portfolio.png",
     thumbnail_alt: "Portfolio",
     name: "This portfolio!",
@@ -346,7 +379,6 @@ export const Projects: Project[] = [
     ],
   },
   {
-    key: 4,
     thumbnail: "/vance.png",
     thumbnail_alt: "Vance",
     name: "Vance",
@@ -366,7 +398,6 @@ export const Projects: Project[] = [
     ],
   },
   {
-    key: 5,
     thumbnail: "/focar.png",
     thumbnail_alt: "Focar",
     name: "Focar",
@@ -380,7 +411,6 @@ export const Projects: Project[] = [
     ],
   },
   {
-    key: 6,
     thumbnail: "/pilon.jpg",
     thumbnail_alt: "Pilon",
     name: "Pilon",
@@ -400,7 +430,6 @@ export const Projects: Project[] = [
     ],
   },
   {
-    key: 7,
     thumbnail: "/fps.PNG",
     thumbnail_alt: "First Person Shooter",
     name: "Untitled First Person Shooter",
@@ -418,21 +447,18 @@ export const Projects: Project[] = [
 
 export const Awards: Award[] = [
   {
-    key: 0,
     date: "July 2024",
     award_name: "University of Waterloo President's Scholarship of Distinction",
     description:
       "Ended with an average of 95% or higher in my final year of high school",
   },
   {
-    key: 1,
     date: "June 2024",
     award_name: "The Timothy Stiles Memorial Award",
     description:
       "Awarded for outstanding mathematical achievement in Senior School at Strathcona-Tweedsmuir School",
   },
   {
-    key: 2,
     date: "June 2024",
     award_name:
       "The Dr. Dorothy Goldstein Memorial Prize for Senior School Science",
@@ -440,7 +466,6 @@ export const Awards: Award[] = [
       "Awarded for outstanding performance in science courses throughout Senior School at Strathcona-Tweedsmuir School",
   },
   {
-    key: 3,
     date: "December 2023",
     award_name:
       "Canadian Senior Mathematics Contest Certificate of Distinction",

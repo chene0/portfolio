@@ -22,7 +22,6 @@ declare global {
 	}
 
 	interface Experience {
-		key: number;
 		role: string;
 		company: string;
 		location: string;
@@ -37,7 +36,6 @@ declare global {
 	}
 
 	interface Project {
-		key: number;
 		thumbnail: string;
 		thumbnail_alt: string;
 		name: string;
@@ -46,7 +44,6 @@ declare global {
 	}
 
 	interface Award {
-		key: number;
 		date: string;
 		award_name: string;
 		description: string;

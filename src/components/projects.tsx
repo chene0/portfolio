@@ -12,8 +12,8 @@ const projectsItem = {
 };
 
 const projects_element_array: React.JSX.Element[] = [];
-let key = 0;
-for (const project of Projects) {
+for (let index = 0; index < Projects.length; index++) {
+    const project = Projects[index];
     const link_elements: React.JSX.Element[] = [];
     for (const link of project.links) {
         link_elements.push(
@@ -28,7 +28,7 @@ for (const project of Projects) {
 
     projects_element_array.push(
         <li className="card bg-base-100 w-full shadow-xl item"
-            key={key}
+            key={index}
         >
             <figure>
                 <div className="w-full aspect-[16/9] relative"> {/* change 4/3 to 1/1 or 16/9 as needed */}
@@ -49,8 +49,6 @@ for (const project of Projects) {
             </div>
         </li>
     );
-
-    ++key;
 }
 
 interface ProjectsComponentProps {
