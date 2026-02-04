@@ -24,6 +24,7 @@ import {
   SiCsharp,
   SiDotnet,
   SiExpress,
+  SiGraphql,
   SiMongodb,
   SiFastapi,
   SiSqlalchemy,
@@ -88,6 +89,12 @@ export const SKILL_EXPRESS: Skill = {
   name: "Express",
   destination: "https://expressjs.com/",
   icon: SiExpress,
+};
+
+export const SKILL_GRAPHQL: Skill = {
+  name: "GraphQL",
+  destination: "https://graphql.org/",
+  icon: SiGraphql,
 };
 
 export const SKILL_TAILWIND: Skill = {
@@ -193,6 +200,7 @@ export const Skills: Skill[] = [
   SKILL_ANGULARJS,
   SKILL_DOTNET,
   SKILL_EXPRESS,
+  SKILL_GRAPHQL,
   SKILL_TAILWIND,
   SKILL_POSTGRES,
   SKILL_SQLSERVER,
