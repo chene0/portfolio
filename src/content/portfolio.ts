@@ -248,6 +248,18 @@ export const Experiences: Experience[] = [
 
 export const Extracurriculars: Experience[] = [
   {
+    role: "Backend Developer",
+    company: "Hack the North",
+    location: "Waterloo, Ontario",
+    location_type: "Hybrid",
+    company_link: "https://hackthenorth.com/",
+    company_logo: "/extracurricular_logos/hack_the_north.jpg",
+    company_logo_alt: "Hack the North Logo",
+    start_date: new Date(2026, 2),
+    end_date: "Present",
+    technologies: [],
+  },
+  {
     role: "Project Developer",
     company: "UW Blueprint",
     location: "Waterloo, Ontario",
