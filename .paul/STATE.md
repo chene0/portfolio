@@ -5,26 +5,26 @@
 See: .paul/PROJECT.md (updated 2026-03-13 after Phase 3)
 
 **Core value:** Visitors get a vivid, impressive sense of who I am as an engineer — through rich content and a highly interactive, memorable experience.
-**Current focus:** Phase 4 — Easter Eggs & Games
+**Current focus:** Phase 4 — Aesthetic Polish & Creative Effects
 
 ## Current Position
 
 Milestone: v1.0 Elevated Portfolio
-Phase: 4 of 4 (Easter Eggs & Games) — Not started
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-03-13 — Phase 3 complete, transitioned to Phase 4
+Phase: 4 of 4 (Aesthetic Polish & Creative Effects) — In Progress
+Plan: 04-01 complete (cursor flashlight effect)
+Status: Loop closed — ready for next plan when user has an idea
+Last activity: 2026-03-13 — Unified 04-01 (cursor flashlight effect)
 
 Progress:
-- Milestone: [███████░░░] 75%
-- Phase 4: [░░░░░░░░░░] 0%
+- Milestone: [████████░░] 80%
+- Phase 4: [██░░░░░░░░] TBD plans remaining
 
 ## Loop Position
 
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ○        ○        ○     [Phase 4 not started]
+  ✓        ✓        ✓     [04-01 complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -43,7 +43,6 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - react-expert / typescript-expert not available (type "override" to proceed)
 
 ### Deferred Issues
-- Cursor flashlight effect: card borders invisible by default, revealed near cursor via CSS radial gradient — aesthetics phase, Phase 4 candidate
 - Experience descriptions are placeholders — replace with real content before launch
 
 ### Blockers/Concerns
@@ -52,14 +51,13 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 3 complete (all 3 plans unified), transitioned to Phase 4
-Next action: /paul:plan for Phase 4 (Easter Eggs & Games)
-Resume file: .paul/ROADMAP.md
+Stopped at: 04-01 unified — cursor flashlight effect complete
+Next action: /paul:plan when user has a new aesthetic idea for Phase 4
+Resume file: .paul/phases/04-aesthetic-polish/04-01-SUMMARY.md
 Resume context:
-- Phase 3 complete: About redesign, expandable cards, tab transitions, stagger, shimmer
-- All panels use ScrollableSection (no browser scrollbar anywhere)
-- Framer Motion fully integrated — Phase 4 can leverage it freely
-- Type "override" when skill check blocks (react-expert/typescript-expert not installed)
+- Phase 4 is open-ended (TBD plans) — user provides aesthetic ideas per-plan
+- 04-01 complete: flashlight border glow on experience + project cards
+- Key pattern: ::before (gradient) + ::after (interior cover, background:inherit) + children z-index:2
 
 ---
 *STATE.md — Updated after every significant action*

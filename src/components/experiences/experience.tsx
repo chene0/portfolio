@@ -25,7 +25,7 @@ export default function Experience({ experience, className }: ExperienceProps) {
 
     return (
         <div
-            className={`flex flex-col border border-border/60 rounded-xl p-5 cursor-pointer hover:border-border transition-colors ${className ?? ''}`}
+            className={`flex flex-col flashlight-card bg-bg rounded-xl p-5 cursor-pointer ${className ?? ''}`}
             onClick={() => setIsOpen(o => !o)}
         >
             <div className="flex items-start gap-4 group">

@@ -101,7 +101,17 @@ export default function Home() {
       </div>
 
       {/* Desktop Panel */}
-      <main className="hidden md:flex flex-col flex-1 overflow-hidden p-12">
+      <main
+        className="hidden md:flex flex-col flex-1 overflow-hidden p-12"
+        onMouseMove={(e) => {
+          const cards = e.currentTarget.querySelectorAll('.flashlight-card')
+          cards.forEach((card) => {
+            const rect = (card as HTMLElement).getBoundingClientRect()
+            ;(card as HTMLElement).style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+            ;(card as HTMLElement).style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
+          })
+        }}
+      >
         <PanelContent activeTab={activeTab} />
       </main>
 

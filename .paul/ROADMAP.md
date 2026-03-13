@@ -17,7 +17,7 @@ Phases: 3 of 4 complete
 | 1 | Content Completion | 2 | ✅ Complete | 2026-03-12 |
 | 2 | Visual Identity Overhaul | 4 | ✅ Complete | 2026-03-12 |
 | 3 | Animation & Interactivity | 3 | ✅ Complete | 2026-03-13 |
-| 4 | Easter Eggs & Games | TBD | Not started | - |
+| 4 | Aesthetic Polish & Creative Effects | TBD | Planning | - |
 
 ## Phase Details
 
@@ -42,11 +42,10 @@ Phases: 3 of 4 complete
 - Project image shimmer skeleton + fade-in on load
 - Scroll-triggered awards animation (useInView)
 
-### Phase 4: Easter Eggs & Games
-**Goal:** Surprise and delight — showcase personality and creativity.
-- Hidden interactables (konami code, cursor effects, etc.)
-- Mini-game or playful interactive element
+### Phase 4: Aesthetic Polish & Creative Effects
+**Goal:** Iterative aesthetic and micro-interaction improvements — make the experience feel crafted and alive.
 - Cursor flashlight effect (card borders revealed via radial gradient near cursor)
+- Additional creative ideas to be defined per-plan
 
 ---
 *Roadmap updated: 2026-03-13 after Phase 3*

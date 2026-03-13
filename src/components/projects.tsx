@@ -30,9 +30,9 @@ export function ProjectsComponent() {
                     key={index}
                     variants={item}
                     whileHover={{ y: -2, transition: { duration: 0.15 } }}
-                    className="bg-bg-raised border border-border rounded-xl overflow-hidden hover:shadow-md hover:shadow-black/30"
+                    className="bg-bg-raised flashlight-card rounded-xl hover:shadow-md hover:shadow-black/30"
                 >
-                    <div className={`w-full aspect-[16/9] relative ${!loaded[index] ? 'img-shimmer' : ''}`}>
+                    <div className={`w-full aspect-[16/9] relative overflow-hidden rounded-t-xl ${!loaded[index] ? 'img-shimmer' : ''}`}>
                         <Image
                             src={project.thumbnail}
                             alt={project.thumbnail_alt}
