@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import type { Viewport } from 'next'
+import { FaChevronUp, FaChevronDown } from 'react-icons/fa6'
 import { type Tab, TabNav } from '@/components/tab-nav'
 import { SkillsComponent } from '@/components/skills'
 import ExperienceCollection from '@/components/experiences/experiencecollection'
@@ -99,7 +100,7 @@ export default function Home() {
       </div>
 
       {/* Desktop Panel */}
-      <main className="hidden md:block flex-1 overflow-y-auto p-12">
+      <main className="hidden md:flex flex-col flex-1 overflow-hidden p-12">
         <PanelContent activeTab={activeTab} />
       </main>
 
@@ -109,25 +110,77 @@ export default function Home() {
 
 function PanelContent({ activeTab }: { activeTab: Tab }) {
   return (
-    <>
+    <div className="flex-1 min-h-0 flex flex-col">
       {activeTab === 'about'    && <AboutPanel />}
       {activeTab === 'work'     && <WorkPanel />}
       {activeTab === 'projects' && <ProjectsPanel />}
-    </>
+    </div>
+  )
+}
+
+function ScrollableSection({ children }: { children: React.ReactNode }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [canScrollUp, setCanScrollUp] = useState(false)
+  const [canScrollDown, setCanScrollDown] = useState(false)
+
+  const updateScrollState = () => {
+    const el = scrollRef.current
+    if (!el) return
+    setCanScrollUp(el.scrollTop > 4)
+    setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 4)
+  }
+
+  useEffect(() => {
+    updateScrollState()
+    const timer = setTimeout(updateScrollState, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const scroll = (dir: 1 | -1) => {
+    scrollRef.current?.scrollBy({ top: dir * 120, behavior: 'smooth' })
+  }
+
+  return (
+    <div className="relative flex-1 min-h-0">
+      {canScrollUp && (
+        <button
+          onClick={() => scroll(-1)}
+          className="absolute top-0 inset-x-0 z-10 flex justify-center pt-1 pb-5 bg-gradient-to-b from-bg to-transparent cursor-pointer"
+        >
+          <FaChevronUp size={12} className="text-text-primary drop-shadow-sm" />
+        </button>
+      )}
+      <div
+        ref={scrollRef}
+        onScroll={updateScrollState}
+        className="h-full overflow-y-auto"
+        style={{ scrollbarWidth: 'none' }}
+      >
+        <div className="pb-4">{children}</div>
+      </div>
+      {canScrollDown && (
+        <button
+          onClick={() => scroll(1)}
+          className="absolute bottom-0 inset-x-0 z-10 flex justify-center pb-1 pt-5 bg-gradient-to-t from-bg to-transparent cursor-pointer"
+        >
+          <FaChevronDown size={12} className="text-text-primary drop-shadow-sm" />
+        </button>
+      )}
+    </div>
   )
 }
 
 function AboutPanel() {
   return (
-    <div className="max-w-xl">
-      <div className="flex flex-col sm:flex-row gap-8 items-start">
+    <div className="h-full flex flex-col max-w-2xl">
+      <div className="flex-shrink-0 flex flex-col sm:flex-row gap-8 items-start">
         <Image
           src="/IMG_0098.jpg"
           alt="Ethan Chen"
-          width={120}
-          height={120}
+          width={128}
+          height={128}
           className="rounded-full flex-shrink-0 object-cover"
-          style={{ width: 120, height: 120 }}
+          style={{ width: 128, height: 128 }}
         />
         <div>
           <h2 className="font-display text-2xl font-semibold text-text-primary mt-0">
@@ -136,9 +189,20 @@ function AboutPanel() {
           <p className="text-text-secondary text-sm mt-1">
             Computer Engineering · University of Waterloo
           </p>
-          <p className="text-text-primary text-sm mt-4 leading-relaxed">
-            I build software — full-stack web, embedded systems, and everything in between.
-            Currently studying Computer Engineering at UWaterloo and interning at Pratt & Whitney.
+          <div className="w-8 h-px bg-border mt-3 mb-4" />
+          <p className="text-text-secondary text-sm leading-relaxed">
+            I&apos;m a Computer Engineering student at the University of Waterloo,
+            currently interning at Pratt &amp; Whitney on internal developer tooling.
+          </p>
+          <p className="text-text-secondary text-sm leading-relaxed mt-3">
+            Previously a full-stack developer co-op at BTNX, shipping product across .NET,
+            React, and AngularJS. On the side, I&apos;m a backend developer at Hack the North
+            and a project developer at UW Blueprint — building software for nonprofits.
+          </p>
+          <p className="text-text-secondary text-sm leading-relaxed mt-3">
+            I work across the full stack, from TypeScript frontends to Python backends and
+            C++ firmware. I&apos;ve shipped projects at 5+ hackathons. Graduated with the
+            UW President&apos;s Scholarship of Distinction.
           </p>
           <button
             onClick={openResume}
@@ -148,17 +212,18 @@ function AboutPanel() {
           </button>
         </div>
       </div>
-      <div className="mt-10">
-        <p className="text-text-secondary text-xs uppercase tracking-widest mb-4">Technologies</p>
-        <SkillsComponent />
-      </div>
+      <hr className="border-border my-8 flex-shrink-0" />
+      <p className="flex-shrink-0 text-text-secondary text-xs uppercase tracking-widest mb-4">Technologies</p>
+      <ScrollableSection>
+        <SkillsComponent categorized />
+      </ScrollableSection>
     </div>
   )
 }
 
 function WorkPanel() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex-1 overflow-y-auto flex flex-col gap-12">
       <section>
         <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Experience</h2>
         <ExperienceCollection experiences={Experiences} />
@@ -177,7 +242,7 @@ function WorkPanel() {
 
 function ProjectsPanel() {
   return (
-    <div>
+    <div className="flex-1 overflow-y-auto">
       <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Projects</h2>
       <ProjectsComponent />
     </div>
