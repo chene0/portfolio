@@ -12,7 +12,7 @@ import { container } from "@/utils/constants";
 import { AwardsComponent } from '@/components/awards';
 import { SocialsComponent } from '@/components/socials';
 import ExperienceCollection from '@/components/experiences/experiencecollection';
-import { Experiences, Extracurriculars } from '@/content/portfolio';
+import { Experiences, Extracurriculars, Socials } from '@/content/portfolio';
 
 export const viewport: Viewport = {
   initialScale: 1,
@@ -130,6 +130,27 @@ export default function Home() {
         </div>
 
         {/* CONTACT */}
+        <div id="contact">
+          <div className="mx-10 lg:mx-40 my-16">
+            <h2>Contact</h2>
+            <p className="text-base-content/80">Feel free to reach out — I&apos;m always open to new opportunities and conversations.</p>
+            <div className="flex flex-wrap gap-6 items-center mt-6">
+              {Socials.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.destination}
+                  target={social.destination.startsWith('mailto') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 no-underline text-base-content hover:opacity-70 transition-opacity"
+                >
+                  <social.icon size={24} />
+                  <span className="text-lg font-medium">{social.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <footer id='footer' className="footer bg-base-100 text-base-content items-center px-10 lg:px-40 py-4">
           <aside className="grid-flow-col items-center">
             <p>Copyright © {new Date().getFullYear()} - All right reserved</p>

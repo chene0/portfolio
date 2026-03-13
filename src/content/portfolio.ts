@@ -31,6 +31,8 @@ import {
   SiPytest,
   SiPhp,
   SiSymfony,
+  SiTypescript,
+  SiPrisma,
 } from "react-icons/si";
 
 export const Sections: Section[] = [
@@ -57,6 +59,10 @@ export const Sections: Section[] = [
   {
     title: "Awards",
     destination: "awards",
+  },
+  {
+    title: "Contact",
+    destination: "contact",
   },
 ];
 
@@ -193,6 +199,18 @@ export const SKILL_SYMFONY: Skill = {
   icon: SiSymfony,
 };
 
+export const SKILL_TYPESCRIPT: Skill = {
+  name: "TypeScript",
+  destination: "https://www.typescriptlang.org/",
+  icon: SiTypescript,
+};
+
+export const SKILL_PRISMA: Skill = {
+  name: "Prisma",
+  destination: "https://www.prisma.io/",
+  icon: SiPrisma,
+};
+
 // Skills array referencing the variables
 export const Skills: Skill[] = [
   SKILL_NEXTJS,
@@ -217,6 +235,8 @@ export const Skills: Skill[] = [
   SKILL_PYTEST,
   SKILL_PHP,
   SKILL_SYMFONY,
+  SKILL_TYPESCRIPT,
+  SKILL_PRISMA,
 ];
 
 export const Experiences: Experience[] = [
@@ -230,7 +250,7 @@ export const Experiences: Experience[] = [
     company_logo_alt: "Pratt & Whitney Logo",
     start_date: new Date(2026, 0),
     end_date: new Date(2026, 3),
-    technologies: [],
+    technologies: [SKILL_PHP, SKILL_SYMFONY],
   },
   {
     role: "Full Stack Developer Co-op",
@@ -242,7 +262,7 @@ export const Experiences: Experience[] = [
     company_logo_alt: "BTNX Inc. Logo",
     start_date: new Date(2025, 5),
     end_date: new Date(2025, 7),
-    technologies: [],
+    technologies: [SKILL_DOTNET, SKILL_REACT, SKILL_ANGULARJS],
   },
 ];
 
@@ -257,7 +277,7 @@ export const Extracurriculars: Experience[] = [
     company_logo_alt: "Hack the North Logo",
     start_date: new Date(2026, 2),
     end_date: "Present",
-    technologies: [],
+    technologies: [SKILL_TYPESCRIPT, SKILL_GRAPHQL, SKILL_PRISMA, SKILL_POSTGRES],
   },
   {
     role: "Project Developer",
@@ -269,7 +289,7 @@ export const Extracurriculars: Experience[] = [
     company_logo_alt: "UW Blueprint Logo",
     start_date: new Date(2025, 8),
     end_date: "Present",
-    technologies: [],
+    technologies: [SKILL_GRAPHQL, SKILL_NEXTJS, SKILL_FASTAPI, SKILL_DOCKER, SKILL_POSTGRES, SKILL_SQLALCHEMY, SKILL_PYTEST],
   },
   {
     role: "Organizer (Frontend Developer)",

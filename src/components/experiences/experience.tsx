@@ -100,7 +100,7 @@ export default function Experience({ experience, className }: ExperienceProps) {
 
             {/* Technologies */}
             {experience.technologies.length > 0 && (
-                <SkillsComponent />
+                <SkillsComponent skills={experience.technologies} />
             )}
         </div>
     );
