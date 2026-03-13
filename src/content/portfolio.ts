@@ -250,6 +250,7 @@ export const Experiences: Experience[] = [
     company_logo_alt: "Pratt & Whitney Logo",
     start_date: new Date(2026, 0),
     end_date: new Date(2026, 3),
+    description: "Developing internal developer tooling for the maintenance engineering group using PHP and Symfony. Working with legacy systems integrations and internal APIs to streamline engineering workflows.",
     technologies: [SKILL_PHP, SKILL_SYMFONY],
   },
   {
@@ -262,6 +263,7 @@ export const Experiences: Experience[] = [
     company_logo_alt: "BTNX Inc. Logo",
     start_date: new Date(2025, 5),
     end_date: new Date(2025, 7),
+    description: "Shipped full-stack features across a medical diagnostics product. Built and maintained .NET backend services and frontend components in React and AngularJS across multiple sprint cycles.",
     technologies: [SKILL_DOTNET, SKILL_REACT, SKILL_ANGULARJS],
   },
 ];
@@ -277,6 +279,7 @@ export const Extracurriculars: Experience[] = [
     company_logo_alt: "Hack the North Logo",
     start_date: new Date(2026, 2),
     end_date: "Present",
+    description: "Building backend systems for Canada's largest hackathon. Developing and maintaining GraphQL APIs, database schemas, and internal tooling that powers the event experience for thousands of attendees.",
     technologies: [SKILL_TYPESCRIPT, SKILL_GRAPHQL, SKILL_PRISMA, SKILL_POSTGRES],
   },
   {
@@ -289,6 +292,7 @@ export const Extracurriculars: Experience[] = [
     company_logo_alt: "UW Blueprint Logo",
     start_date: new Date(2025, 8),
     end_date: "Present",
+    description: "Developing full-stack software for nonprofits as part of a student-run design team. Building features across a Next.js frontend and FastAPI backend to support clients with real operational needs.",
     technologies: [SKILL_GRAPHQL, SKILL_NEXTJS, SKILL_FASTAPI, SKILL_DOCKER, SKILL_POSTGRES, SKILL_SQLALCHEMY, SKILL_PYTEST],
   },
   {
@@ -301,6 +305,7 @@ export const Extracurriculars: Experience[] = [
     company_logo_alt: "FormulaTech Hacks Logo",
     start_date: new Date(2025, 3),
     end_date: "Present",
+    description: "Organizing and leading frontend development for a university-level hackathon. Collaborating with a cross-functional team to design and execute the event experience.",
     technologies: [],
   },
   {
@@ -313,6 +318,7 @@ export const Extracurriculars: Experience[] = [
     company_logo_alt: "First Tech Challenge Logo",
     start_date: new Date(2022, 8),
     end_date: new Date(2025, 4),
+    description: "Developed autonomous routines and teleoperation firmware for a competitive robotics platform. Implemented motor control algorithms, sensor integration, and hardware communication protocols in Java.",
     technologies: [],
   },
 ];

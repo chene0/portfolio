@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import Image from "next/image"
 import Link from "next/link"
+import { motion, AnimatePresence } from 'framer-motion'
 import { SkillsComponent } from "../skills";
 
 interface ExperienceProps {
@@ -10,6 +12,8 @@ interface ExperienceProps {
 }
 
 export default function Experience({ experience, className }: ExperienceProps) {
+    const [isOpen, setIsOpen] = useState(false)
+
     const formatDate = (date: Date | "Present" | "Incoming") => {
         if (date === "Present") return "Present"
         if (date === "Incoming") return "Incoming"
@@ -19,18 +23,12 @@ export default function Experience({ experience, className }: ExperienceProps) {
         }).format(date)
     }
 
-    const getLocationTypeIcon = (locationType: string) => {
-        switch (locationType.toLowerCase()) {
-            case "remote":  return "🏠"
-            case "hybrid":  return "🔄"
-            case "onsite":  return "🏢"
-            default:        return "📍"
-        }
-    }
-
     return (
-        <div className={`flex flex-col gap-1 ${className ?? ''}`}>
-            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-8 mb-4">
+        <div
+            className={`flex flex-col border border-border/60 rounded-xl p-5 cursor-pointer hover:border-border transition-colors ${className ?? ''}`}
+            onClick={() => setIsOpen(o => !o)}
+        >
+            <div className="flex items-start gap-4 group">
                 <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-bg-elevated border border-border">
                     <Image
                         src={experience.company_logo || "/placeholder.svg"}
@@ -51,28 +49,51 @@ export default function Experience({ experience, className }: ExperienceProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-accent text-sm font-medium hover:opacity-70 transition-opacity no-underline"
+                        onClick={e => e.stopPropagation()}
                     >
                         {experience.company}
                     </Link>
                     <div className="flex flex-wrap items-center gap-3 mt-1">
                         <span className="text-text-secondary text-xs">
-                            {getLocationTypeIcon(experience.location_type)} {experience.location}
+                            {experience.location} · {experience.location_type}
                         </span>
-                        <span className="text-text-muted text-xs">{experience.location_type}</span>
                         <span className="text-text-secondary text-xs">
                             {formatDate(experience.start_date)} – {formatDate(experience.end_date)}
                         </span>
                     </div>
                 </div>
+
+                <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-text-muted group-hover:text-text-secondary flex-shrink-0 mt-1"
+                >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </motion.div>
             </div>
 
-            {experience.description && (
-                <p className="text-text-secondary text-sm leading-relaxed mb-4">{experience.description}</p>
-            )}
-
-            {experience.technologies.length > 0 && (
-                <SkillsComponent skills={experience.technologies} />
-            )}
+            <AnimatePresence initial={false}>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pt-3 pl-20">
+                            {experience.description && (
+                                <p className="text-text-secondary text-sm leading-relaxed mb-4">{experience.description}</p>
+                            )}
+                            {experience.technologies.length > 0 && (
+                                <SkillsComponent skills={experience.technologies} />
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

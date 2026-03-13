@@ -8,7 +8,7 @@ Evolve an existing SWE portfolio from a functional but basic site into a rich, v
 
 **v1.0 Elevated Portfolio** (v1.0.0)
 Status: In progress
-Phases: 2 of 4 complete
+Phases: 3 of 4 complete
 
 ## Phases
 
@@ -16,34 +16,37 @@ Phases: 2 of 4 complete
 |-------|------|-------|--------|-----------|
 | 1 | Content Completion | 2 | ✅ Complete | 2026-03-12 |
 | 2 | Visual Identity Overhaul | 4 | ✅ Complete | 2026-03-12 |
-| 3 | Animation & Interactivity | 3 | Planning | - |
+| 3 | Animation & Interactivity | 3 | ✅ Complete | 2026-03-13 |
 | 4 | Easter Eggs & Games | TBD | Not started | - |
 
 ## Phase Details
 
-### Phase 1: Content Completion
+### Phase 1: Content Completion ✅
 **Goal:** Ensure all sections have meaningful, complete data before visual work begins.
-- Add contact section
-- Populate experience/extracurricular tech stacks and descriptions
-- Ensure all data fields are meaningful and non-empty
+- Added contact section
+- Populated experience/extracurricular tech stacks and descriptions
+- All data fields meaningful and non-empty
 
-### Phase 2: Visual Identity Overhaul
+### Phase 2: Visual Identity Overhaul ✅
 **Goal:** Dramatic aesthetic upgrade — make a strong first impression.
 - New design direction (layout, typography, color, spacing)
-- Hero/landing redesign
-- Section layout upgrades (less card-grid, more creative)
-- Skills section visual upgrade
+- DaisyUI removed — pure Tailwind + CSS custom properties
+- Tab-panel layout with sidebar, dark palette, design tokens
 
-### Phase 3: Animation & Interactivity
+### Phase 3: Animation & Interactivity ✅
 **Goal:** Full Framer Motion utilization — the site should feel alive.
-- Scroll-triggered entrance animations across all sections
-- Hover interactions, parallax, staggered reveals
-- Smooth transitions and micro-interactions
+- About panel redesigned (real bio, skills categorized into 5 groups)
+- Expandable experience cards with AnimatePresence collapse/expand
+- Tab transitions (fade+slide 220ms), staggered card/award entrances
+- ScrollableSection with chevron UI on all panels
+- Project image shimmer skeleton + fade-in on load
+- Scroll-triggered awards animation (useInView)
 
 ### Phase 4: Easter Eggs & Games
 **Goal:** Surprise and delight — showcase personality and creativity.
 - Hidden interactables (konami code, cursor effects, etc.)
 - Mini-game or playful interactive element
+- Cursor flashlight effect (card borders revealed via radial gradient near cursor)
 
 ---
-*Roadmap updated: 2026-03-12*
+*Roadmap updated: 2026-03-13 after Phase 3*

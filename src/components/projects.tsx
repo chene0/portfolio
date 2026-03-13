@@ -1,17 +1,48 @@
+'use client'
+
+import { useState } from 'react';
 import { Projects } from "@/content/portfolio";
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.05 } }
+}
+
+const item = {
+    hidden: { opacity: 0, y: 10 },
+    show:   { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' } }
+}
 
 export function ProjectsComponent() {
+    const [loaded, setLoaded] = useState<boolean[]>(Projects.map(() => false))
+
     return (
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 m-0">
+        <motion.ul
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 m-0"
+        >
             {Projects.map((project, index) => (
-                <li key={index} className="bg-bg-raised border border-border rounded-xl overflow-hidden">
-                    <div className="w-full aspect-[16/9] relative">
+                <motion.li
+                    key={index}
+                    variants={item}
+                    whileHover={{ y: -2, transition: { duration: 0.15 } }}
+                    className="bg-bg-raised border border-border rounded-xl overflow-hidden hover:shadow-md hover:shadow-black/30"
+                >
+                    <div className={`w-full aspect-[16/9] relative ${!loaded[index] ? 'img-shimmer' : ''}`}>
                         <Image
                             src={project.thumbnail}
                             alt={project.thumbnail_alt}
                             fill
-                            className="object-cover"
+                            onLoad={() => setLoaded(prev => {
+                                const next = [...prev]
+                                next[index] = true
+                                return next
+                            })}
+                            className={`object-cover transition-opacity duration-500 ${loaded[index] ? 'opacity-100' : 'opacity-0'}`}
                         />
                     </div>
                     <div className="p-4">
@@ -38,8 +69,8 @@ export function ProjectsComponent() {
                             </div>
                         )}
                     </div>
-                </li>
+                </motion.li>
             ))}
-        </ul>
+        </motion.ul>
     );
 }

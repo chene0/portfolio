@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import type { Viewport } from 'next'
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa6'
@@ -111,15 +112,27 @@ export default function Home() {
 function PanelContent({ activeTab }: { activeTab: Tab }) {
   return (
     <div className="flex-1 min-h-0 flex flex-col">
-      {activeTab === 'about'    && <AboutPanel />}
-      {activeTab === 'work'     && <WorkPanel />}
-      {activeTab === 'projects' && <ProjectsPanel />}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.22, ease: 'easeOut' }}
+          className="flex-1 min-h-0 flex flex-col"
+        >
+          {activeTab === 'about'    && <AboutPanel />}
+          {activeTab === 'work'     && <WorkPanel />}
+          {activeTab === 'projects' && <ProjectsPanel />}
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }
 
 function ScrollableSection({ children }: { children: React.ReactNode }) {
   const scrollRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const [canScrollUp, setCanScrollUp] = useState(false)
   const [canScrollDown, setCanScrollDown] = useState(false)
 
@@ -133,7 +146,13 @@ function ScrollableSection({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     updateScrollState()
     const timer = setTimeout(updateScrollState, 100)
-    return () => clearTimeout(timer)
+    const ro = new ResizeObserver(updateScrollState)
+    if (scrollRef.current) ro.observe(scrollRef.current)
+    if (contentRef.current) ro.observe(contentRef.current)
+    return () => {
+      clearTimeout(timer)
+      ro.disconnect()
+    }
   }, [])
 
   const scroll = (dir: 1 | -1) => {
@@ -156,7 +175,7 @@ function ScrollableSection({ children }: { children: React.ReactNode }) {
         className="h-full overflow-y-auto"
         style={{ scrollbarWidth: 'none' }}
       >
-        <div className="pb-4">{children}</div>
+        <div ref={contentRef} className="pb-4">{children}</div>
       </div>
       {canScrollDown && (
         <button
@@ -223,29 +242,31 @@ function AboutPanel() {
 
 function WorkPanel() {
   return (
-    <div className="flex-1 overflow-y-auto flex flex-col gap-12">
-      <section>
-        <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Experience</h2>
-        <ExperienceCollection experiences={Experiences} />
-      </section>
-      <section>
-        <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Extracurriculars</h2>
-        <ExperienceCollection experiences={Extracurriculars} />
-      </section>
-      <section>
-        <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Awards</h2>
-        <AwardsComponent />
-      </section>
-    </div>
+    <ScrollableSection>
+      <div className="flex flex-col gap-12">
+        <section>
+          <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Experience</h2>
+          <ExperienceCollection experiences={Experiences} />
+        </section>
+        <section>
+          <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Extracurriculars</h2>
+          <ExperienceCollection experiences={Extracurriculars} />
+        </section>
+        <section>
+          <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Awards</h2>
+          <AwardsComponent />
+        </section>
+      </div>
+    </ScrollableSection>
   )
 }
 
 function ProjectsPanel() {
   return (
-    <div className="flex-1 overflow-y-auto">
+    <ScrollableSection>
       <h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">Projects</h2>
       <ProjectsComponent />
-    </div>
+    </ScrollableSection>
   )
 }
 
