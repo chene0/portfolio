@@ -51,13 +51,15 @@ None.
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: 04-01 unified — cursor flashlight effect complete
-Next action: /paul:plan when user has a new aesthetic idea for Phase 4
-Resume file: .paul/phases/04-aesthetic-polish/04-01-SUMMARY.md
+Stopped at: CRT research complete, ready to plan CRT retro TV overlay effect
+Next action: /paul:plan — CRT retro TV screen effects (research already done)
+Resume file: .paul/HANDOFF-2026-03-13.md
 Resume context:
-- Phase 4 is open-ended (TBD plans) — user provides aesthetic ideas per-plan
-- 04-01 complete: flashlight border glow on experience + project cards
-- Key pattern: ::before (gradient) + ::after (interior cover, background:inherit) + children z-index:2
+- 04-02 (sidebar glow) was attempted and abandoned — git checkout . reverted all code
+- CRT research complete: .paul/research/crt-retro-tv-effects.md — read before planning
+- Architecture: CRTOverlay component in layout.tsx, fixed overlay, pointer-events:none
+- Barrel distortion: skip/fake only — CSS can't do real barrel math
+- Delete .paul/phases/04-aesthetic-polish/04-02-PLAN.md (abandoned, untracked)
 
 ---
 *STATE.md — Updated after every significant action*
