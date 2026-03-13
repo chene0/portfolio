@@ -2,51 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    /* Palette */
+    --color-bg: #080808;
+    --color-bg-raised: #0f0f0f;
+    --color-bg-elevated: #161616;
+    --color-border: #1e1e1e;
+    --color-border-subtle: #141414;
+    --color-text-primary: #e2e2e2;
+    --color-text-secondary: #7a7a7a;
+    --color-text-muted: #3d3d3d;
+    --color-accent: #c8c0b4;
+    --color-accent-glow: rgba(200, 192, 180, 0.06);
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    /* Typography */
+    --font-sans: var(--font-inter), system-ui, sans-serif;
+    --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  }
+
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
 }
 
-html[data-theme] .prose {
-  --tw-prose-body: inherit;
-  --tw-prose-headings: inherit;
-  --tw-prose-lead: inherit;
-  --tw-prose-links: inherit;
-  --tw-prose-bold: inherit;
-  --tw-prose-counters: inherit;
-  --tw-prose-bullets: inherit;
-  --tw-prose-hr: inherit;
-  --tw-prose-quotes: inherit;
-  --tw-prose-quote-borders: inherit;
-  --tw-prose-captions: inherit;
-  --tw-prose-code: inherit;
-  --tw-prose-pre-code: inherit;
-  --tw-prose-pre-bg: inherit;
-  --tw-prose-th-borders: inherit;
-  --tw-prose-td-borders: inherit;
+/* Prose overrides */
+.prose {
+  --tw-prose-body: var(--color-text-primary);
+  --tw-prose-headings: var(--color-text-primary);
+  --tw-prose-lead: var(--color-text-secondary);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-text-primary);
+  --tw-prose-counters: var(--color-text-secondary);
+  --tw-prose-bullets: var(--color-text-secondary);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-text-primary);
+  --tw-prose-quote-borders: var(--color-border);
+  --tw-prose-captions: var(--color-text-secondary);
+  --tw-prose-code: var(--color-accent);
+  --tw-prose-pre-code: var(--color-text-primary);
+  --tw-prose-pre-bg: var(--color-bg-raised);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border-subtle);
 }

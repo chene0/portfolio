@@ -33,7 +33,7 @@ Visitors get a vivid, impressive sense of who I am as an engineer — through ri
 
 ### Active (In Progress)
 
-- [ ] Visual identity overhaul — dramatic aesthetic upgrade
+- [x] Visual identity overhaul — dramatic aesthetic upgrade — Phase 2
 - [ ] Highly interactive UI/UX (animations, creative layouts)
 
 ### Planned (Next)

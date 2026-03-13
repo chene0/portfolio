@@ -21,84 +21,55 @@ export default function Experience({ experience, className }: ExperienceProps) {
 
     const getLocationTypeIcon = (locationType: string) => {
         switch (locationType.toLowerCase()) {
-            case "remote":
-                return "🏠"
-            case "hybrid":
-                return "🔄"
-            case "onsite":
-                return "🏢"
-            default:
-                return "📍"
-        }
-    }
-
-    const getLocationTypeBadgeColor = (locationType: string) => {
-        switch (locationType.toLowerCase()) {
-            case "remote":
-                return "badge-success"
-            case "hybrid":
-                return "badge-warning"
-            case "onsite":
-                return "badge-info"
-            default:
-                return "badge-neutral"
+            case "remote":  return "🏠"
+            case "hybrid":  return "🔄"
+            case "onsite":  return "🏢"
+            default:        return "📍"
         }
     }
 
     return (
-        <div className={`rounded-2xl ${className}`}>
-            {/* Header with company logo and basic info */}
-            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12 mb-4">
-                <div className="avatar">
-                    <div className="w-36 h-36 rounded-lg">
-                        <Image
-                            src={experience.company_logo || "/placeholder.svg"}
-                            alt={experience.company_logo_alt}
-                            width={144}
-                            height={144}
-                            className="object-contain"
-                            style={{ marginTop: 0, marginBottom: 0 }}
-                        />
-                    </div>
+        <div className={`flex flex-col gap-1 ${className ?? ''}`}>
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-8 mb-4">
+                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-bg-elevated border border-border">
+                    <Image
+                        src={experience.company_logo || "/placeholder.svg"}
+                        alt={experience.company_logo_alt}
+                        width={64}
+                        height={64}
+                        className="object-contain w-full h-full"
+                        style={{ margin: 0 }}
+                    />
                 </div>
 
                 <div className="flex-1">
-                    <h3 className="card-title text-xl font-bold text-base-content" style={{ marginTop: 0, marginBottom: 0 }}>{experience.role}</h3>
+                    <h3 className="font-display text-base font-semibold text-text-primary" style={{ margin: 0 }}>
+                        {experience.role}
+                    </h3>
                     <Link
                         href={experience.company_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="link link-neutral-content text-lg font-semibold hover:link-hover"
+                        className="text-accent text-sm font-medium hover:opacity-70 transition-opacity no-underline"
                     >
                         {experience.company}
                     </Link>
-
-                    {/* Location and dates */}
-                    <div className="flex flex-wrap items-center gap-2 mt-2">
-                        <div className="flex items-center gap-1 text-base-content/70">
-                            <span>{getLocationTypeIcon(experience.location_type)}</span>
-                            <span className="text-sm">{experience.location}</span>
-                        </div>
-
-                        <div className={`badge ${getLocationTypeBadgeColor(experience.location_type)} badge-sm`}>
-                            {experience.location_type}
-                        </div>
-
-                        <div className="text-sm text-base-content/60">
-                            {formatDate(experience.start_date)} - {formatDate(experience.end_date)}
-                        </div>
+                    <div className="flex flex-wrap items-center gap-3 mt-1">
+                        <span className="text-text-secondary text-xs">
+                            {getLocationTypeIcon(experience.location_type)} {experience.location}
+                        </span>
+                        <span className="text-text-muted text-xs">{experience.location_type}</span>
+                        <span className="text-text-secondary text-xs">
+                            {formatDate(experience.start_date)} – {formatDate(experience.end_date)}
+                        </span>
                     </div>
                 </div>
             </div>
 
-            {/* Description */}
             {experience.description && (
-                <div className="mb-4">
-                    <p className="text-base-content/80 leading-relaxed">{experience.description}</p>
-                </div>
+                <p className="text-text-secondary text-sm leading-relaxed mb-4">{experience.description}</p>
             )}
 
-            {/* Technologies */}
             {experience.technologies.length > 0 && (
                 <SkillsComponent skills={experience.technologies} />
             )}
