@@ -11,9 +11,9 @@ See: .paul/PROJECT.md (updated 2026-03-13 after Phase 3)
 
 Milestone: v1.0 Elevated Portfolio
 Phase: 4 of 4 (Aesthetic Polish & Creative Effects) — In Progress
-Plan: 04-01 complete (cursor flashlight effect)
+Plan: 04-02 complete (CRT retro TV overlay)
 Status: Loop closed — ready for next plan when user has an idea
-Last activity: 2026-03-13 — Unified 04-01 (cursor flashlight effect)
+Last activity: 2026-03-16 — Unified 04-02 (CRT retro TV overlay)
 
 Progress:
 - Milestone: [████████░░] 80%
@@ -24,7 +24,7 @@ Progress:
 Current loop state:
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [04-01 complete — ready for next PLAN]
+  ✓        ✓        ✓     [04-02 complete — ready for next PLAN]
 ```
 
 ## Accumulated Context
@@ -37,6 +37,9 @@ PLAN ──▶ APPLY ──▶ UNIFY
 - 2026-03-13: Multiple cards expandable simultaneously — natural for portfolio comparison
 - 2026-03-13: Awards stagger scroll-triggered (useInView) — awards not visible on tab mount
 - 2026-03-13: Image shimmer skeleton on project cards — prevents load flicker
+- 2026-03-16: CRT overlay: flicker removed (distracting), 10 total effects shipped
+- 2026-03-16: CRT heading text-shadow: chromatic aberration + phosphor glow + ghosting combined
+- 2026-03-16: SVG filter defs live in CRTOverlay component (id="crt-grain" etc.)
 
 ### Technical Constraints Discovered
 - lucide-react not installed — use inline SVGs or react-icons
@@ -50,16 +53,10 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-13
-Stopped at: CRT research complete, ready to plan CRT retro TV overlay effect
-Next action: /paul:plan — CRT retro TV screen effects (research already done)
-Resume file: .paul/HANDOFF-2026-03-13.md
-Resume context:
-- 04-02 (sidebar glow) was attempted and abandoned — git checkout . reverted all code
-- CRT research complete: .paul/research/crt-retro-tv-effects.md — read before planning
-- Architecture: CRTOverlay component in layout.tsx, fixed overlay, pointer-events:none
-- Barrel distortion: skip/fake only — CSS can't do real barrel math
-- Delete .paul/phases/04-aesthetic-polish/04-02-PLAN.md (abandoned, untracked)
+Last session: 2026-03-16
+Stopped at: Unified 04-02 (CRT retro TV overlay)
+Next action: /paul:plan — next aesthetic idea (Phase 4 is open-ended)
+Resume file: .paul/phases/04-aesthetic-polish/04-02-SUMMARY.md
 
 ---
 *STATE.md — Updated after every significant action*

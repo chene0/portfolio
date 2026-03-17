@@ -117,6 +117,120 @@
   }
 }
 
+/* === CRT Overlay === */
+
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.crt-overlay > div {
+  position: absolute;
+  inset: 0;
+}
+
+.crt-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px, rgba(0, 0, 0, 0.07) 4px
+  );
+  z-index: 10;
+}
+
+.crt-vignette {
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 9;
+}
+
+@keyframes crt-scan-move {
+  from { transform: translateY(-100vh); }
+  to   { transform: translateY(100vh); }
+}
+
+.crt-scanline-moving {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  z-index: 11;
+  animation: crt-scan-move 10s linear infinite;
+  will-change: transform;
+}
+
+@keyframes crt-grain-jitter {
+  0%   { transform: translate(0,     0);    }
+  10%  { transform: translate(-2%,  -3%);   }
+  20%  { transform: translate(3%,    1%);   }
+  30%  { transform: translate(-1%,   2%);   }
+  40%  { transform: translate(2%,   -1%);   }
+  50%  { transform: translate(-3%,   2%);   }
+  60%  { transform: translate(1%,   -2%);   }
+  70%  { transform: translate(-2%,   3%);   }
+  80%  { transform: translate(3%,   -1%);   }
+  90%  { transform: translate(-1%,   1%);   }
+  100% { transform: translate(0,     0);    }
+}
+
+.crt-grain {
+  filter: url(#crt-grain);
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  z-index: 12;
+  animation: crt-grain-jitter 0.15s steps(1) infinite;
+  will-change: transform;
+}
+
+/* Chromatic aberration + phosphor glow + ghosting — headings only */
+h1, h2, h3, h4 {
+  text-shadow:
+    -1.5px 0 rgba(255, 0, 60, 0.4),         /* chroma — red channel */
+     1.5px 0 rgba(0, 60, 255, 0.4),          /* chroma — blue channel */
+     0 0 8px rgba(200, 192, 180, 0.2),        /* phosphor glow/bloom */
+     3px 0 rgba(255, 255, 255, 0.04);         /* ghosting/ringing echo */
+}
+
+/* Color Temperature Shift — warm amber wash (phosphor white point) */
+.crt-tint {
+  background: rgba(255, 210, 140, 0.025);
+  z-index: 6;
+}
+
+/* Screen Curvature Reflection — ambient glare at top center */
+.crt-reflection {
+  background: radial-gradient(
+    ellipse 50% 15% at 50% 3%,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 100%
+  );
+  z-index: 7;
+}
+
+/* Shadow Mask / Aperture Grille — RGB phosphor column pattern */
+.crt-mask {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 0,   0,   0.012) 0px,
+    rgba(255, 0,   0,   0.012) 1px,
+    rgba(0,   255, 0,   0.012) 1px,
+    rgba(0,   255, 0,   0.012) 2px,
+    rgba(0,   0,   255, 0.012) 2px,
+    rgba(0,   0,   255, 0.012) 3px,
+    transparent 3px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+  z-index: 8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-scanline-moving,
+  .crt-grain {
+    animation: none;
+  }
+}
+
 /* Prose overrides */
 .prose {
   --tw-prose-body: var(--color-text-primary);
