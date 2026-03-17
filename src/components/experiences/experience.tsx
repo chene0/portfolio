@@ -29,7 +29,14 @@ export default function Experience({ experience, className }: ExperienceProps) {
             onClick={() => setIsOpen(o => !o)}
         >
             <div className="flex items-start gap-4 group">
-                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-bg-elevated border border-border">
+                <Link
+                    href={experience.company_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${experience.company} website`}
+                    className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-bg-elevated border border-border hover:opacity-70 transition-opacity"
+                    onClick={e => e.stopPropagation()}
+                >
                     <Image
                         src={experience.company_logo || "/placeholder.svg"}
                         alt={experience.company_logo_alt}
@@ -38,21 +45,15 @@ export default function Experience({ experience, className }: ExperienceProps) {
                         className="object-contain w-full h-full"
                         style={{ margin: 0 }}
                     />
-                </div>
+                </Link>
 
                 <div className="flex-1">
                     <h3 className="font-display text-base font-semibold text-text-primary" style={{ margin: 0 }}>
                         {experience.role}
                     </h3>
-                    <Link
-                        href={experience.company_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-accent text-sm font-medium hover:opacity-70 transition-opacity no-underline"
-                        onClick={e => e.stopPropagation()}
-                    >
+                    <span className="text-accent text-sm font-medium">
                         {experience.company}
-                    </Link>
+                    </span>
                     <div className="flex flex-wrap items-center gap-3 mt-1">
                         <span className="text-text-secondary text-xs">
                             {experience.location} · {experience.location_type}
