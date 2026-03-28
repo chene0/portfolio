@@ -1,64 +1,76 @@
+'use client'
+
+import { useState } from 'react';
 import { Projects } from "@/content/portfolio";
-import { container } from "@/utils/constants";
-import { motion } from "framer-motion";
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
-const projectsItem = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1,
-    },
-};
-
-const projects_element_array: React.JSX.Element[] = [];
-for (let index = 0; index < Projects.length; index++) {
-    const project = Projects[index];
-    const link_elements: React.JSX.Element[] = [];
-    for (const link of project.links) {
-        link_elements.push(
-            <a
-                target="_blank"
-                href={link.destination}
-                rel="noopener noreferrer"
-                className="mx-1"
-            ><link.icon size={'1.5rem'} /></a>
-        );
-    }
-
-    projects_element_array.push(
-        <li className="card bg-base-100 w-full shadow-xl item"
-            key={index}
-        >
-            <figure>
-                <div className="w-full aspect-[16/9] relative"> {/* change 4/3 to 1/1 or 16/9 as needed */}
-                    <Image
-                        src={project.thumbnail}
-                        alt={project.thumbnail_alt}
-                        fill
-                        className="object-cover"
-                    />
-                </div>
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">{project.name}</h2>
-                <p><small>{project.description}</small></p>
-                <div className="card-actions justify-end">
-                    {...link_elements}
-                </div>
-            </div>
-        </li>
-    );
+const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.05 } }
 }
 
-interface ProjectsComponentProps {
-    projectsInView: boolean;
+const item = {
+    hidden: { opacity: 0, y: 10 },
+    show:   { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' } }
 }
 
-export function ProjectsComponent({ projectsInView }: ProjectsComponentProps) {
+export function ProjectsComponent() {
+    const [loaded, setLoaded] = useState<boolean[]>(Projects.map(() => false))
+
     return (
-        <ul className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 not-prose list-none'>
-            {...projects_element_array}
-        </ul>
+        <motion.ul
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 m-0"
+        >
+            {Projects.map((project, index) => (
+                <motion.li
+                    key={index}
+                    variants={item}
+                    whileHover={{ y: -2, transition: { duration: 0.15 } }}
+                    className="bg-bg-raised flashlight-card rounded-xl hover:shadow-md hover:shadow-black/30"
+                >
+                    <div className={`w-full aspect-[16/9] relative overflow-hidden rounded-t-xl ${!loaded[index] ? 'img-shimmer' : ''}`}>
+                        <Image
+                            src={project.thumbnail}
+                            alt={project.thumbnail_alt}
+                            fill
+                            onLoad={() => setLoaded(prev => {
+                                const next = [...prev]
+                                next[index] = true
+                                return next
+                            })}
+                            className={`object-cover transition-opacity duration-500 ${loaded[index] ? 'opacity-100' : 'opacity-0'}`}
+                        />
+                    </div>
+                    <div className="p-4">
+                        <h3 className="font-display font-semibold text-text-primary text-base" style={{ margin: '0 0 4px 0' }}>
+                            {project.name}
+                        </h3>
+                        <p className="text-text-secondary text-sm leading-relaxed" style={{ margin: '0 0 12px 0' }}>
+                            {project.description}
+                        </p>
+                        {project.links.length > 0 && (
+                            <div className="flex gap-3">
+                                {project.links.map((link) => (
+                                    <a
+                                        key={link.name}
+                                        href={link.destination}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        title={link.name}
+                                        className="text-text-secondary hover:text-text-primary transition-colors no-underline"
+                                    >
+                                        <link.icon size={18} />
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </motion.li>
+            ))}
+        </motion.ul>
     );
 }

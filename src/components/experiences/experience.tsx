@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import Image from "next/image"
 import Link from "next/link"
+import { motion, AnimatePresence } from 'framer-motion'
 import { SkillsComponent } from "../skills";
 
 interface ExperienceProps {
@@ -10,6 +12,9 @@ interface ExperienceProps {
 }
 
 export default function Experience({ experience, className }: ExperienceProps) {
+    const [isOpen, setIsOpen] = useState(false)
+    const [logoLoaded, setLogoLoaded] = useState(false)
+
     const formatDate = (date: Date | "Present" | "Incoming") => {
         if (date === "Present") return "Present"
         if (date === "Incoming") return "Incoming"
@@ -19,89 +24,79 @@ export default function Experience({ experience, className }: ExperienceProps) {
         }).format(date)
     }
 
-    const getLocationTypeIcon = (locationType: string) => {
-        switch (locationType.toLowerCase()) {
-            case "remote":
-                return "🏠"
-            case "hybrid":
-                return "🔄"
-            case "onsite":
-                return "🏢"
-            default:
-                return "📍"
-        }
-    }
-
-    const getLocationTypeBadgeColor = (locationType: string) => {
-        switch (locationType.toLowerCase()) {
-            case "remote":
-                return "badge-success"
-            case "hybrid":
-                return "badge-warning"
-            case "onsite":
-                return "badge-info"
-            default:
-                return "badge-neutral"
-        }
-    }
-
     return (
-        <div className={`rounded-2xl ${className}`}>
-            {/* Header with company logo and basic info */}
-            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12 mb-4">
-                <div className="avatar">
-                    <div className="w-36 h-36 rounded-lg">
-                        <Image
-                            src={experience.company_logo || "/placeholder.svg"}
-                            alt={experience.company_logo_alt}
-                            width={144}
-                            height={144}
-                            className="object-contain"
-                            style={{ marginTop: 0, marginBottom: 0 }}
-                        />
-                    </div>
-                </div>
+        <div
+            className={`flex flex-col flashlight-card bg-bg rounded-xl p-5 cursor-pointer ${className ?? ''}`}
+            onClick={() => setIsOpen(o => !o)}
+        >
+            <div className="flex items-start gap-4 group">
+                <Link
+                    href={experience.company_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${experience.company} website`}
+                    className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-bg-elevated border border-border hover:opacity-70 transition-opacity ${!logoLoaded ? 'img-shimmer' : ''}`}
+                    onClick={e => e.stopPropagation()}
+                >
+                    <Image
+                        src={experience.company_logo || "/placeholder.svg"}
+                        alt={experience.company_logo_alt}
+                        width={64}
+                        height={64}
+                        onLoad={() => setLogoLoaded(true)}
+                        className={`object-contain w-full h-full transition-opacity duration-500 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        style={{ margin: 0 }}
+                    />
+                </Link>
 
                 <div className="flex-1">
-                    <h3 className="card-title text-xl font-bold text-base-content" style={{ marginTop: 0, marginBottom: 0 }}>{experience.role}</h3>
-                    <Link
-                        href={experience.company_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link link-neutral-content text-lg font-semibold hover:link-hover"
-                    >
+                    <h3 className="font-display text-base font-semibold text-text-primary" style={{ margin: 0 }}>
+                        {experience.role}
+                    </h3>
+                    <span className="text-accent text-sm font-medium">
                         {experience.company}
-                    </Link>
-
-                    {/* Location and dates */}
-                    <div className="flex flex-wrap items-center gap-2 mt-2">
-                        <div className="flex items-center gap-1 text-base-content/70">
-                            <span>{getLocationTypeIcon(experience.location_type)}</span>
-                            <span className="text-sm">{experience.location}</span>
-                        </div>
-
-                        <div className={`badge ${getLocationTypeBadgeColor(experience.location_type)} badge-sm`}>
-                            {experience.location_type}
-                        </div>
-
-                        <div className="text-sm text-base-content/60">
-                            {formatDate(experience.start_date)} - {formatDate(experience.end_date)}
-                        </div>
+                    </span>
+                    <div className="flex flex-wrap items-center gap-3 mt-1">
+                        <span className="text-text-secondary text-xs">
+                            {experience.location} · {experience.location_type}
+                        </span>
+                        <span className="text-text-secondary text-xs">
+                            {formatDate(experience.start_date)} – {formatDate(experience.end_date)}
+                        </span>
                     </div>
                 </div>
+
+                <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-text-muted group-hover:text-text-secondary flex-shrink-0 mt-1"
+                >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                </motion.div>
             </div>
 
-            {/* Description */}
-            {experience.description && (
-                <div className="mb-4">
-                    <p className="text-base-content/80 leading-relaxed">{experience.description}</p>
-                </div>
-            )}
-
-            {/* Technologies */}
-            {experience.technologies.length > 0 && (
-                <SkillsComponent />
-            )}
+            <AnimatePresence initial={false}>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pt-3 pl-20">
+                            {experience.description && (
+                                <p className="text-text-secondary text-sm leading-relaxed mb-4">{experience.description}</p>
+                            )}
+                            {experience.technologies.length > 0 && (
+                                <SkillsComponent skills={experience.technologies} />
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

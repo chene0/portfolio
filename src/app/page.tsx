@@ -1,142 +1,334 @@
-'use client'
+"use client";
 
-import React, { useRef, useState, useId } from 'react';
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { useInView } from "framer-motion";
-import Image from 'next/image';
-import type { Viewport } from 'next';
-import { MobileNavbar, Navbar } from '@/components/navbar';
-import { SkillsComponent } from '@/components/skills';
-import { ProjectsComponent } from '@/components/projects';
-import { container } from "@/utils/constants";
-import { AwardsComponent } from '@/components/awards';
-import { SocialsComponent } from '@/components/socials';
-import ExperienceCollection from '@/components/experiences/experiencecollection';
-import { Experiences, Extracurriculars } from '@/content/portfolio';
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import type { Viewport } from "next";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
+import { type Tab, TabNav } from "@/components/tab-nav";
+import { SkillsComponent } from "@/components/skills";
+import ExperienceCollection from "@/components/experiences/experiencecollection";
+import { ProjectsComponent } from "@/components/projects";
+import { AwardsComponent } from "@/components/awards";
+import { Experiences, Extracurriculars, Socials } from "@/content/portfolio";
 
 export const viewport: Viewport = {
-  initialScale: 1,
-  width: 'device-width'
+	initialScale: 1,
+	width: "device-width",
+};
+
+async function openResume() {
+	const win = window.open("", "_blank");
+	const response = await fetch("/api/getResumeSignedUrl", { method: "POST" });
+	const data = await response.json();
+	if (win) {
+		win.location.href = data.url;
+	} else {
+		alert("Popup was blocked. Please allow popups for this site.");
+	}
 }
 
-
 export default function Home() {
-  const awardsRef = useRef(null);
-  const awardsInView = useInView(awardsRef, { once: true });
+	const [activeTab, setActiveTab] = useState<Tab>("about");
 
-  const projectsRef = useRef(null);
-  const projectsInView = useInView(projectsRef, { once: true });
+	return (
+		<div className="h-screen w-screen flex overflow-hidden bg-bg text-text-primary">
+			{/* Desktop Sidebar */}
+			<aside className="hidden md:flex flex-col w-64 flex-shrink-0 border-r border-border p-8">
+				<div>
+					<h1 className="font-display text-xl font-semibold text-text-primary">
+						Ethan Chen
+					</h1>
+					<p className="text-text-secondary text-sm mt-1">
+						Computer Engineering
+					</p>
+					<p className="text-text-secondary text-sm">University of Waterloo</p>
+					<button
+						onClick={openResume}
+						className="text-accent text-sm mt-4 hover:opacity-70 transition-opacity cursor-pointer"
+					>
+						Resume ↗
+					</button>
+				</div>
+				<div className="mt-12">
+					<TabNav active={activeTab} onChange={setActiveTab} />
+				</div>
+				<div className="mt-auto pt-8 flex flex-col gap-3">
+					<div className="flex gap-4">
+						{Socials.map((social) => (
+							<a
+								key={social.name}
+								href={social.destination}
+								target={
+									social.destination.startsWith("mailto") ? undefined : "_blank"
+								}
+								rel="noopener noreferrer"
+								title={social.name}
+								className="text-text-muted hover:text-text-primary transition-colors"
+							>
+								<social.icon size={16} />
+							</a>
+						))}
+					</div>
+					<p className="text-text-muted text-xs">
+						© {new Date().getFullYear()} Ethan Chen
+					</p>
+				</div>
+			</aside>
 
-  async function openResume() {
-    const win = window.open('', '_blank');
-    const response = await fetch('/api/getResumeSignedUrl', { method: 'POST' });
-    const data = await response.json();
-    if (win) {
-      win.location.href = data.url;
-    } else {
-      // Optionally, handle the case where the popup was blocked
-      alert('Popup was blocked. Please allow popups for this site.');
-    }
-  }
+			{/* Mobile: full-width column */}
+			<div className="flex md:hidden flex-col w-full overflow-hidden">
+				<header className="flex-shrink-0 border-b border-border">
+					<div className="px-6 pt-5 pb-3">
+						<h1 className="font-display text-lg font-semibold text-text-primary">
+							Ethan Chen
+						</h1>
+						<p className="text-text-secondary text-xs mt-0.5">
+							Computer Engineering · UWaterloo
+						</p>
+					</div>
+					<TabNav
+						active={activeTab}
+						onChange={setActiveTab}
+						orientation="horizontal"
+					/>
+				</header>
+				<main className="flex-1 overflow-y-auto p-6">
+					<PanelContent activeTab={activeTab} />
+				</main>
+				<footer className="flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
+					<div className="flex gap-4">
+						{Socials.map((social) => (
+							<a
+								key={social.name}
+								href={social.destination}
+								target={
+									social.destination.startsWith("mailto") ? undefined : "_blank"
+								}
+								rel="noopener noreferrer"
+								title={social.name}
+								className="text-text-muted hover:text-text-primary transition-colors"
+							>
+								<social.icon size={16} />
+							</a>
+						))}
+					</div>
+					<p className="text-text-muted text-xs">
+						© {new Date().getFullYear()} Ethan Chen
+					</p>
+				</footer>
+			</div>
 
+			{/* Desktop Panel */}
+			<main
+				className="hidden md:flex flex-col flex-1 overflow-hidden p-12"
+				onMouseMove={(e) => {
+					const cards = e.currentTarget.querySelectorAll(".flashlight-card");
+					cards.forEach((card) => {
+						const rect = (card as HTMLElement).getBoundingClientRect();
+						(card as HTMLElement).style.setProperty(
+							"--mouse-x",
+							`${e.clientX - rect.left}px`,
+						);
+						(card as HTMLElement).style.setProperty(
+							"--mouse-y",
+							`${e.clientY - rect.top}px`,
+						);
+					});
+				}}
+			>
+				<PanelContent activeTab={activeTab} />
+			</main>
+		</div>
+	);
+}
 
-  return (
-    <div id='top' className='bg-base-100 relative'>
-      {/* NAVBAR */}
-      <div className="sticky top-0 z-20 navbar bg-base-100 shadow-lg">
-        <MobileNavbar />
-        <Navbar />
-      </div>
+function PanelContent({ activeTab }: { activeTab: Tab }) {
+	return (
+		<div className="flex-1 min-h-0 flex flex-col">
+			<AnimatePresence mode="wait">
+				<motion.div
+					key={activeTab}
+					initial={{ opacity: 0, y: 8 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -8 }}
+					transition={{ duration: 0.22, ease: "easeOut" }}
+					className="flex-1 min-h-0 flex flex-col"
+				>
+					{activeTab === "about" && <AboutPanel />}
+					{activeTab === "work" && <WorkPanel />}
+					{activeTab === "projects" && <ProjectsPanel />}
+				</motion.div>
+			</AnimatePresence>
+		</div>
+	);
+}
 
+function ScrollableSection({ children }: { children: React.ReactNode }) {
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const contentRef = useRef<HTMLDivElement>(null);
+	const [canScrollUp, setCanScrollUp] = useState(false);
+	const [canScrollDown, setCanScrollDown] = useState(false);
 
-      <div className="prose lg:prose-xl bg-base-100 min-w-full">
-        {/* INTRODUCTION */}
-        <div className="mb-16 mx-10 lg:mx-40 relative z-10" style={{ overflow: 'hidden' }}>
-          <div className="flex flex-col lg:flex-row items-center justify-center">
-            <motion.div whileHover={{
-              scale: 1.1,
-              transition: {
-                type: "spring",
-                duration: 1
-              },
-            }}>
-              <Image
-                src="/IMG_0098.jpg"
-                alt='Portrait'
-                width={309}
-                height={469}
-                className="max-w-2xs sm:max-w-sm rounded-full shadow-2xl mb-8" />
-            </motion.div>
-            <div className="text-center lg:text-left lg:ml-16">
-              <h1 className="text-4xl font-bold text-shadow-lg mb-2 lg:mb-2">Ethan Chen</h1>
-              <h4 className="text-xl mt-0 lg:mt-0">UWaterloo Computer Engineering Student</h4>
-              <div className="mt-6">
-                <button
-                  type="button"
-                  onClick={async e => {
-                    await openResume();
-                  }}
-                  className="bg-transparent border-none p-0 m-0 font-[500] underline cursor-pointer font-inherit"
-                  style={{ background: "none" }}
-                >
-                  Download my resume
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+	const updateScrollState = () => {
+		const el = scrollRef.current;
+		if (!el) return;
+		setCanScrollUp(el.scrollTop > 4);
+		setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
+	};
 
-        {/* SKILLS */}
-        <div id="skills">
-          <div className="mx-10 lg:mx-40 my-16">
-            <h2>Skills</h2>
-            <SkillsComponent />
-          </div>
-        </div>
+	useEffect(() => {
+		updateScrollState();
+		const timer = setTimeout(updateScrollState, 100);
+		const ro = new ResizeObserver(updateScrollState);
+		if (scrollRef.current) ro.observe(scrollRef.current);
+		if (contentRef.current) ro.observe(contentRef.current);
+		return () => {
+			clearTimeout(timer);
+			ro.disconnect();
+		};
+	}, []);
 
-        {/* EXPERIENCES */}
-        <div id='experiences'>
-          <div className="mx-10 lg:mx-40 my-16">
-            <h2>Experiences</h2>
-            <ExperienceCollection experiences={Experiences} />
-          </div>
-        </div>
+	const scroll = (dir: 1 | -1) => {
+		scrollRef.current?.scrollBy({ top: dir * 120, behavior: "smooth" });
+	};
 
-        {/* EXTRACURRICULARS */}
-        <div id='extracurriculars'>
-          <div className="mx-10 lg:mx-40 my-16">
-            <h2>Extracurriculars</h2>
-            <ExperienceCollection experiences={Extracurriculars} />
-          </div>
-        </div>
+	return (
+		<div className="relative flex-1 min-h-0">
+			{canScrollUp && (
+				<button
+					onClick={() => scroll(-1)}
+					className="absolute top-0 inset-x-0 z-10 flex justify-center pt-1 pb-5 bg-gradient-to-b from-bg to-transparent cursor-pointer"
+				>
+					<FaChevronUp size={12} className="text-text-primary drop-shadow-sm" />
+				</button>
+			)}
+			<div
+				ref={scrollRef}
+				onScroll={updateScrollState}
+				className="h-full overflow-y-auto"
+				style={{ scrollbarWidth: "none" }}
+			>
+				<div ref={contentRef} className="pb-4">
+					{children}
+				</div>
+			</div>
+			{canScrollDown && (
+				<button
+					onClick={() => scroll(1)}
+					className="absolute bottom-0 inset-x-0 z-10 flex justify-center pb-1 pt-5 bg-gradient-to-t from-bg to-transparent cursor-pointer"
+				>
+					<FaChevronDown
+						size={12}
+						className="text-text-primary drop-shadow-sm"
+					/>
+				</button>
+			)}
+		</div>
+	);
+}
 
-        {/* PROJECTS */}
-        <div id="projects" className='min-h-screen'>
-          <div className="mx-10 lg:mx-40 my-16">
-            <h2 ref={projectsRef}>Projects</h2>
+function AboutPanel() {
+	const [avatarLoaded, setAvatarLoaded] = useState(false)
+	return (
+		<div className="h-full flex flex-col max-w-2xl">
+			<div className="flex-shrink-0 flex flex-col sm:flex-row gap-8 items-start">
+				<div
+					className={`relative flex-shrink-0 rounded-full overflow-hidden ${!avatarLoaded ? 'img-shimmer' : ''}`}
+					style={{ width: 128, height: 128 }}
+				>
+					<Image
+						src="/IMG_0098.jpg"
+						alt="Ethan Chen"
+						width={128}
+						height={128}
+						onLoad={() => setAvatarLoaded(true)}
+						className={`rounded-full object-cover transition-opacity duration-500 ${avatarLoaded ? 'opacity-100' : 'opacity-0'}`}
+						style={{ width: 128, height: 128 }}
+					/>
+				</div>
+				<div>
+					<h2 className="font-display text-2xl font-semibold text-text-primary mt-0">
+						Ethan Chen
+					</h2>
+					<p className="text-text-secondary text-sm mt-1">
+						Computer Engineering · University of Waterloo
+					</p>
+					<div className="w-8 h-px bg-border mt-3 mb-4" />
+					<p className="text-text-secondary text-sm leading-relaxed">
+						Currently...
+					</p>
+					<ul className="mt-2 space-y-1 text-text-secondary text-sm leading-relaxed">
+						<li>• interning at Pratt &amp; Whitney</li>
+						<li>• on the Hack the North backend organizer team</li>
+						<li>• developing for UW Blueprint</li>
+					</ul>
+					<p className="mt-4 text-text-secondary text-sm leading-relaxed">
+						If we ever meet, you will probably catch me listening to something
+						new on Spotify or Soundcloud (shoutout{" "}
+						<a
+							href="https://www.oliverhuang.ca/"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-accent underline underline-offset-2 decoration-dotted hover:opacity-70 transition-opacity"
+						>
+							oliver huang
+						</a>{" "}
+						for song recs).
+					</p>
+					<button
+						onClick={openResume}
+						className="mt-5 text-sm text-accent hover:opacity-70 transition-opacity cursor-pointer"
+					>
+						Resume ↗
+					</button>
+				</div>
+			</div>
+			<hr className="border-border my-8 flex-shrink-0" />
+			<p className="flex-shrink-0 text-text-secondary text-xs uppercase tracking-widest mb-4">
+				Technologies
+			</p>
+			<ScrollableSection>
+				<SkillsComponent categorized />
+			</ScrollableSection>
+		</div>
+	);
+}
 
-            <ProjectsComponent projectsInView={projectsInView} />
-          </div>
-        </div>
+function WorkPanel() {
+	return (
+		<ScrollableSection>
+			<div className="flex flex-col gap-12">
+				<section>
+					<h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">
+						Experience
+					</h2>
+					<ExperienceCollection experiences={Experiences} />
+				</section>
+				<section>
+					<h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">
+						Extracurriculars
+					</h2>
+					<ExperienceCollection experiences={Extracurriculars} />
+				</section>
+				<section>
+					<h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">
+						Awards
+					</h2>
+					<AwardsComponent />
+				</section>
+			</div>
+		</ScrollableSection>
+	);
+}
 
-        {/* AWARDS */}
-        <div id="awards" ref={awardsRef}>
-          <div className="mx-10 lg:mx-40 my-16">
-            <h2>Awards</h2>
-            <div>
-              <AwardsComponent awardsInView={awardsInView} />
-            </div>
-          </div>
-        </div>
-
-        {/* CONTACT */}
-        <footer id='footer' className="footer bg-base-100 text-base-content items-center px-10 lg:px-40 py-4">
-          <aside className="grid-flow-col items-center">
-            <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-          </aside>
-          <SocialsComponent />
-        </footer>
-      </div>
-    </div >
-  )
+function ProjectsPanel() {
+	return (
+		<ScrollableSection>
+			<h2 className="font-display text-lg font-semibold text-text-primary mb-6 mt-0">
+				Projects
+			</h2>
+			<ProjectsComponent />
+		</ScrollableSection>
+	);
 }
