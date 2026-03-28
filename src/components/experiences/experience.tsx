@@ -13,6 +13,7 @@ interface ExperienceProps {
 
 export default function Experience({ experience, className }: ExperienceProps) {
     const [isOpen, setIsOpen] = useState(false)
+    const [logoLoaded, setLogoLoaded] = useState(false)
 
     const formatDate = (date: Date | "Present" | "Incoming") => {
         if (date === "Present") return "Present"
@@ -34,7 +35,7 @@ export default function Experience({ experience, className }: ExperienceProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Visit ${experience.company} website`}
-                    className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-bg-elevated border border-border hover:opacity-70 transition-opacity"
+                    className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-bg-elevated border border-border hover:opacity-70 transition-opacity ${!logoLoaded ? 'img-shimmer' : ''}`}
                     onClick={e => e.stopPropagation()}
                 >
                     <Image
@@ -42,7 +43,8 @@ export default function Experience({ experience, className }: ExperienceProps) {
                         alt={experience.company_logo_alt}
                         width={64}
                         height={64}
-                        className="object-contain w-full h-full"
+                        onLoad={() => setLogoLoaded(true)}
+                        className={`object-contain w-full h-full transition-opacity duration-500 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
                         style={{ margin: 0 }}
                     />
                 </Link>

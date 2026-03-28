@@ -229,17 +229,24 @@ function ScrollableSection({ children }: { children: React.ReactNode }) {
 }
 
 function AboutPanel() {
+	const [avatarLoaded, setAvatarLoaded] = useState(false)
 	return (
 		<div className="h-full flex flex-col max-w-2xl">
 			<div className="flex-shrink-0 flex flex-col sm:flex-row gap-8 items-start">
-				<Image
-					src="/IMG_0098.jpg"
-					alt="Ethan Chen"
-					width={128}
-					height={128}
-					className="rounded-full flex-shrink-0 object-cover"
+				<div
+					className={`relative flex-shrink-0 rounded-full overflow-hidden ${!avatarLoaded ? 'img-shimmer' : ''}`}
 					style={{ width: 128, height: 128 }}
-				/>
+				>
+					<Image
+						src="/IMG_0098.jpg"
+						alt="Ethan Chen"
+						width={128}
+						height={128}
+						onLoad={() => setAvatarLoaded(true)}
+						className={`rounded-full object-cover transition-opacity duration-500 ${avatarLoaded ? 'opacity-100' : 'opacity-0'}`}
+						style={{ width: 128, height: 128 }}
+					/>
+				</div>
 				<div>
 					<h2 className="font-display text-2xl font-semibold text-text-primary mt-0">
 						Ethan Chen
