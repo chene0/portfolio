@@ -33,6 +33,8 @@ import {
 	SiSymfony,
 	SiTypescript,
 	SiPrisma,
+	SiAstro,
+	SiKubernetes,
 } from "react-icons/si";
 
 export const Sections: Section[] = [
@@ -163,6 +165,12 @@ export const SKILL_DOCKER: Skill = {
 	icon: FaDocker,
 };
 
+export const SKILL_KUBERNETES: Skill = {
+	name: "Kubernetes",
+	destination: "https://kubernetes.io/",
+	icon: SiKubernetes,
+};
+
 export const SKILL_AWS: Skill = {
 	name: "AWS",
 	destination: "https://aws.amazon.com/",
@@ -211,6 +219,12 @@ export const SKILL_PRISMA: Skill = {
 	icon: SiPrisma,
 };
 
+export const SKILL_ASTRO: Skill = {
+	name: "Astro",
+	destination: "https://astro.build/",
+	icon: SiAstro,
+};
+
 // Skills array referencing the variables
 export const Skills: Skill[] = [
 	SKILL_NEXTJS,
@@ -229,6 +243,7 @@ export const Skills: Skill[] = [
 	SKILL_JAVA,
 	SKILL_UNITY,
 	SKILL_DOCKER,
+	SKILL_KUBERNETES,
 	SKILL_AWS,
 	SKILL_FASTAPI,
 	SKILL_SQLALCHEMY,
@@ -264,8 +279,6 @@ export const Experiences: Experience[] = [
 		company_logo_alt: "BTNX Inc. Logo",
 		start_date: new Date(2025, 5),
 		end_date: new Date(2025, 7),
-		// description:
-		// 	"Shipped full-stack features across a medical diagnostics product. Built and maintained .NET backend services and frontend components in React and AngularJS across multiple sprint cycles.",
 		description:
 			"Shipped full-stack features across internal management tooling and customer checkout workflows",
 		technologies: [SKILL_DOTNET, SKILL_REACT, SKILL_ANGULARJS],
@@ -302,8 +315,6 @@ export const Extracurriculars: Experience[] = [
 		start_date: new Date(2025, 8),
 		end_date: "Present",
 		description: "Tech for social good 💙",
-		// description:
-		// 	"Developing full-stack software for nonprofits as part of a student-run design team. Building features across a Next.js frontend and FastAPI backend to support clients with real operational needs.",
 		technologies: [
 			SKILL_GRAPHQL,
 			SKILL_NEXTJS,
@@ -324,9 +335,7 @@ export const Extracurriculars: Experience[] = [
 		company_logo_alt: "FormulaTech Hacks Logo",
 		start_date: new Date(2025, 3),
 		end_date: "Present",
-		description:
-			"Organizing and leading frontend development for a university-level hackathon. Collaborating with a cross-functional team to design and execute the event experience.",
-		technologies: [],
+		technologies: [SKILL_ASTRO, SKILL_REACT],
 	},
 	{
 		role: "Firmware Developer",
@@ -338,9 +347,7 @@ export const Extracurriculars: Experience[] = [
 		company_logo_alt: "First Tech Challenge Logo",
 		start_date: new Date(2022, 8),
 		end_date: new Date(2025, 4),
-		description:
-			"Developed autonomous routines and teleoperation firmware for a competitive robotics platform. Implemented motor control algorithms, sensor integration, and hardware communication protocols in Java.",
-		technologies: [],
+		technologies: [SKILL_JAVA],
 	},
 ];
 
