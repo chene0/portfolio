@@ -32,7 +32,7 @@ export default function Home() {
 	const [activeTab, setActiveTab] = useState<Tab>("about");
 
 	return (
-		<div className="h-screen w-screen flex overflow-hidden bg-bg text-text-primary">
+		<div className="h-dvh w-screen flex overflow-hidden bg-bg text-text-primary">
 			{/* Desktop Sidebar */}
 			<aside className="hidden md:flex flex-col w-64 flex-shrink-0 border-r border-border p-8">
 				<div>
