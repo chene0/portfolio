@@ -229,12 +229,12 @@ function ScrollableSection({ children }: { children: React.ReactNode }) {
 }
 
 function AboutPanel() {
-	const [avatarLoaded, setAvatarLoaded] = useState(false)
+	const [avatarLoaded, setAvatarLoaded] = useState(false);
 	return (
 		<div className="h-full flex flex-col max-w-2xl">
 			<div className="flex-shrink-0 flex flex-col sm:flex-row gap-8 items-start">
 				<div
-					className={`relative flex-shrink-0 rounded-full overflow-hidden ${!avatarLoaded ? 'img-shimmer' : ''}`}
+					className={`relative flex-shrink-0 rounded-full overflow-hidden ${!avatarLoaded ? "img-shimmer" : ""}`}
 					style={{ width: 128, height: 128 }}
 				>
 					<Image
@@ -243,7 +243,7 @@ function AboutPanel() {
 						width={128}
 						height={128}
 						onLoad={() => setAvatarLoaded(true)}
-						className={`rounded-full object-cover transition-opacity duration-500 ${avatarLoaded ? 'opacity-100' : 'opacity-0'}`}
+						className={`rounded-full object-cover transition-opacity duration-500 ${avatarLoaded ? "opacity-100" : "opacity-0"}`}
 						style={{ width: 128, height: 128 }}
 					/>
 				</div>
@@ -260,7 +260,7 @@ function AboutPanel() {
 					</p>
 					<ul className="mt-2 space-y-1 text-text-secondary text-sm leading-relaxed">
 						<li>• interning at Pratt &amp; Whitney</li>
-						<li>• on the Hack the North backend organizer team</li>
+						<li>• organizing for Hack the North</li>
 						<li>• developing for UW Blueprint</li>
 					</ul>
 					<p className="mt-4 text-text-secondary text-sm leading-relaxed">
