@@ -2,15 +2,15 @@ import { BiLogoPostgresql } from "react-icons/bi";
 import { DiMsqlServer } from "react-icons/di";
 import {
 	FaAws,
+	FaDev,
 	FaDocker,
+	FaGithub,
+	FaGlobe,
 	FaJava,
+	FaLinkedin,
 	FaPython,
 	FaReact,
 	FaUnity,
-	FaGithub,
-	FaLinkedin,
-	FaGlobe,
-	FaDev,
 	FaYoutube,
 } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -20,21 +20,22 @@ import {
 	RiTailwindCssFill,
 } from "react-icons/ri";
 import {
+	SiAstro,
 	SiCplusplus,
 	SiCsharp,
 	SiDotnet,
 	SiExpress,
-	SiGraphql,
-	SiMongodb,
 	SiFastapi,
-	SiSqlalchemy,
-	SiPytest,
+	SiGraphql,
+	SiKubernetes,
+	SiMongodb,
 	SiPhp,
+	SiPrisma,
+	SiPytest,
+	SiRust,
+	SiSqlalchemy,
 	SiSymfony,
 	SiTypescript,
-	SiPrisma,
-	SiAstro,
-	SiKubernetes,
 } from "react-icons/si";
 
 export const Sections: Section[] = [
@@ -225,6 +226,12 @@ export const SKILL_ASTRO: Skill = {
 	icon: SiAstro,
 };
 
+export const SKILL_RUST: Skill = {
+	name: "Rust",
+	destination: "https://www.rust-lang.org/",
+	icon: SiRust,
+};
+
 // Skills array referencing the variables
 export const Skills: Skill[] = [
 	SKILL_NEXTJS,
@@ -252,6 +259,7 @@ export const Skills: Skill[] = [
 	SKILL_SYMFONY,
 	SKILL_TYPESCRIPT,
 	SKILL_PRISMA,
+	SKILL_RUST,
 ];
 
 export const Experiences: Experience[] = [
@@ -313,7 +321,7 @@ export const Extracurriculars: Experience[] = [
 		company_logo: "/extracurricular_logos/uwbp.jpg",
 		company_logo_alt: "UW Blueprint Logo",
 		start_date: new Date(2025, 8),
-		end_date: "Present",
+		end_date: new Date(2026, 3),
 		description: "Tech for social good 💙",
 		technologies: [
 			SKILL_GRAPHQL,
@@ -334,7 +342,7 @@ export const Extracurriculars: Experience[] = [
 		company_logo: "/extracurricular_logos/fthacks.jpg",
 		company_logo_alt: "FormulaTech Hacks Logo",
 		start_date: new Date(2025, 3),
-		end_date: "Present",
+		end_date: new Date(2026, 2),
 		technologies: [SKILL_ASTRO, SKILL_REACT],
 	},
 	{

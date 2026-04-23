@@ -24,6 +24,7 @@ import {
 	SKILL_PYTEST,
 	Skills,
 	SKILL_KUBERNETES,
+	SKILL_RUST,
 } from "@/content/portfolio";
 
 const SKILL_GROUPS: { label: string; skills: Skill[] }[] = [
@@ -50,6 +51,7 @@ const SKILL_GROUPS: { label: string; skills: Skill[] }[] = [
 			SKILL_CSHARP,
 			SKILL_CPP,
 			SKILL_JAVA,
+			SKILL_RUST,
 		],
 	},
 	{
