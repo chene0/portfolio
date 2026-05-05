@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import type { Viewport } from "next";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa6";
-import { type Tab, TabNav } from "@/components/tab-nav";
-import { SkillsComponent } from "@/components/skills";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import { AwardsComponent } from "@/components/awards";
 import ExperienceCollection from "@/components/experiences/experiencecollection";
 import { ProjectsComponent } from "@/components/projects";
-import { AwardsComponent } from "@/components/awards";
+import { SkillsComponent } from "@/components/skills";
+import { type Tab, TabNav } from "@/components/tab-nav";
 import { Experiences, Extracurriculars, Socials } from "@/content/portfolio";
 
 export const viewport: Viewport = {
@@ -259,9 +259,8 @@ function AboutPanel() {
 						Currently...
 					</p>
 					<ul className="mt-2 space-y-1 text-text-secondary text-sm leading-relaxed">
-						<li>• interning at Pratt &amp; Whitney</li>
+						<li>• seeking Fall 2026 internships</li>
 						<li>• organizing for Hack the North</li>
-						<li>• developing for UW Blueprint</li>
 					</ul>
 					<p className="mt-4 text-text-secondary text-sm leading-relaxed">
 						If we ever meet, you will probably catch me listening to something
