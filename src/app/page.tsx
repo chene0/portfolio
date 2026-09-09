@@ -260,9 +260,8 @@ function AboutPanel() {
 					</p>
 					<ul className="mt-2 space-y-1 text-text-secondary text-sm leading-relaxed">
 						{/* <li>• seeking Fall 2026 internships</li> */}
-						<li>• incoming SWE at ETHGlobal</li>
+						<li>• engineering at ETHGlobal</li>
 						<li>• organizing for Hack the North</li>
-						<li>• balding over ECE 224</li>
 					</ul>
 					<p className="mt-4 text-text-secondary text-sm leading-relaxed">
 						If we ever meet, you will probably catch me listening to something
