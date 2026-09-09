@@ -29,6 +29,7 @@ import {
 	SiGraphql,
 	SiKubernetes,
 	SiMongodb,
+	SiMysql,
 	SiPhp,
 	SiPrisma,
 	SiPytest,
@@ -128,6 +129,12 @@ export const SKILL_MONGODB: Skill = {
 	name: "MongoDB",
 	destination: "https://www.mongodb.com/",
 	icon: SiMongodb,
+};
+
+export const SKILL_MYSQL: Skill = {
+	name: "MySQL",
+	destination: "https://www.mysql.com/",
+	icon: SiMysql,
 };
 
 export const SKILL_PYTHON: Skill = {
@@ -244,6 +251,7 @@ export const Skills: Skill[] = [
 	SKILL_POSTGRES,
 	SKILL_SQLSERVER,
 	SKILL_MONGODB,
+	SKILL_MYSQL,
 	SKILL_PYTHON,
 	SKILL_CSHARP,
 	SKILL_CPP,
@@ -263,6 +271,26 @@ export const Skills: Skill[] = [
 ];
 
 export const Experiences: Experience[] = [
+	{
+		role: "Software Engineer Intern",
+		company: "ETHGlobal",
+		location: "Remote",
+		location_type: "Remote",
+		company_link: "https://ethglobal.com/",
+		company_logo: "/experience_logos/ethglobal.jpg",
+		company_logo_alt: "ETHGlobal Logo",
+		start_date: new Date(2026, 8),
+		end_date: "Present",
+		description: "Building the world’s largest Ethereum developer community",
+		technologies: [
+			SKILL_TYPESCRIPT,
+			SKILL_REACT,
+			SKILL_NEXTJS,
+			SKILL_GRAPHQL,
+			SKILL_PRISMA,
+			SKILL_MYSQL,
+		],
+	},
 	{
 		role: "Software Engineer Intern",
 		company: "Pratt & Whitney",
