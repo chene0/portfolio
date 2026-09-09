@@ -16,6 +16,7 @@ import {
 	SKILL_POSTGRES,
 	SKILL_SQLSERVER,
 	SKILL_MONGODB,
+	SKILL_MYSQL,
 	SKILL_SQLALCHEMY,
 	SKILL_PRISMA,
 	SKILL_GRAPHQL,
@@ -56,7 +57,13 @@ const SKILL_GROUPS: { label: string; skills: Skill[] }[] = [
 	},
 	{
 		label: "Data",
-		skills: [SKILL_POSTGRES, SKILL_SQLSERVER, SKILL_MONGODB, SKILL_SQLALCHEMY],
+		skills: [
+			SKILL_POSTGRES,
+			SKILL_MYSQL,
+			SKILL_SQLSERVER,
+			SKILL_MONGODB,
+			SKILL_SQLALCHEMY,
+		],
 	},
 	{
 		label: "Infra & Tools",
