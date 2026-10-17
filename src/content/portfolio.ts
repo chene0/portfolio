@@ -274,7 +274,7 @@ export const Experiences: Experience[] = [
 	{
 		role: "Software Engineer Intern",
 		company: "ETHGlobal",
-		location: "Remote",
+		location: "San Francisco, California",
 		location_type: "Remote",
 		company_link: "https://ethglobal.com/",
 		company_logo: "/experience_logos/ethglobal.jpg",
