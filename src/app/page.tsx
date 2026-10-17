@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 
 export default function Home() {
 	const [activeTab, setActiveTab] = useState<Tab>("about");
-	const mobileScrollRef = useRef<HTMLElement>(null);
+	const scrollRef = useRef<HTMLElement>(null);
 
 	return (
 		<div className="h-dvh w-screen flex overflow-hidden bg-bg text-text-primary">
@@ -77,10 +77,10 @@ export default function Home() {
 						orientation="horizontal"
 					/>
 				</header>
-				<main ref={mobileScrollRef} className="flex-1 overflow-y-auto p-6">
+				<main ref={scrollRef} className="flex-1 overflow-y-auto p-6">
 					<PanelContent
 						activeTab={activeTab}
-						onExitComplete={() => mobileScrollRef.current?.scrollTo({ top: 0 })}
+						onExitComplete={() => scrollRef.current?.scrollTo({ top: 0 })}
 					/>
 				</main>
 				<footer className="flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
