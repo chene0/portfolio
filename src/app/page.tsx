@@ -19,6 +19,7 @@ export const viewport: Viewport = {
 
 export default function Home() {
 	const [activeTab, setActiveTab] = useState<Tab>("about");
+	const mobileScrollRef = useRef<HTMLElement>(null);
 
 	return (
 		<div className="h-dvh w-screen flex overflow-hidden bg-bg text-text-primary">
@@ -76,8 +77,11 @@ export default function Home() {
 						orientation="horizontal"
 					/>
 				</header>
-				<main className="flex-1 overflow-y-auto p-6">
-					<PanelContent activeTab={activeTab} />
+				<main ref={mobileScrollRef} className="flex-1 overflow-y-auto p-6">
+					<PanelContent
+						activeTab={activeTab}
+						onExitComplete={() => mobileScrollRef.current?.scrollTo({ top: 0 })}
+					/>
 				</main>
 				<footer className="flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
 					<div className="flex gap-4">
@@ -126,10 +130,16 @@ export default function Home() {
 	);
 }
 
-function PanelContent({ activeTab }: { activeTab: Tab }) {
+function PanelContent({
+	activeTab,
+	onExitComplete,
+}: {
+	activeTab: Tab;
+	onExitComplete?: () => void;
+}) {
 	return (
 		<div className="flex-1 min-h-0 flex flex-col">
-			<AnimatePresence mode="wait">
+			<AnimatePresence mode="wait" onExitComplete={onExitComplete}>
 				<motion.div
 					key={activeTab}
 					initial={{ opacity: 0, y: 8 }}
