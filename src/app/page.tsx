@@ -17,17 +17,6 @@ export const viewport: Viewport = {
 	width: "device-width",
 };
 
-async function openResume() {
-	const win = window.open("", "_blank");
-	const response = await fetch("/api/getResumeSignedUrl", { method: "POST" });
-	const data = await response.json();
-	if (win) {
-		win.location.href = data.url;
-	} else {
-		alert("Popup was blocked. Please allow popups for this site.");
-	}
-}
-
 export default function Home() {
 	const [activeTab, setActiveTab] = useState<Tab>("about");
 
@@ -43,12 +32,6 @@ export default function Home() {
 						Computer Engineering
 					</p>
 					<p className="text-text-secondary text-sm">University of Waterloo</p>
-					<button
-						onClick={openResume}
-						className="text-accent text-sm mt-4 hover:opacity-70 transition-opacity cursor-pointer"
-					>
-						Resume ↗
-					</button>
 				</div>
 				<div className="mt-12">
 					<TabNav active={activeTab} onChange={setActiveTab} />
@@ -276,12 +259,6 @@ function AboutPanel() {
 						</a>{" "}
 						for song recs).
 					</p>
-					<button
-						onClick={openResume}
-						className="mt-5 text-sm text-accent hover:opacity-70 transition-opacity cursor-pointer"
-					>
-						Resume ↗
-					</button>
 				</div>
 			</div>
 			<hr className="border-border my-8 flex-shrink-0" />
