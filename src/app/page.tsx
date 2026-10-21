@@ -24,7 +24,11 @@ export default function Home() {
 	return (
 		<div className="h-dvh w-screen flex overflow-hidden bg-bg text-text-primary">
 			{/* Desktop Sidebar */}
-			<aside className="hidden md:flex flex-col w-64 flex-shrink-0 border-r border-border p-8">
+			<aside className="relative hidden md:flex flex-col w-64 flex-shrink-0 border-r border-border p-8 overflow-hidden">
+				<div
+					aria-hidden
+					className="pointer-events-none absolute -bottom-28 -left-28 h-80 w-80 rounded-full bg-accent/20 blur-3xl"
+				/>
 				<div>
 					<h1 className="font-display text-xl font-semibold text-text-primary">
 						Ethan Chen
@@ -37,7 +41,7 @@ export default function Home() {
 				<div className="mt-12">
 					<TabNav active={activeTab} onChange={setActiveTab} />
 				</div>
-				<div className="mt-auto pt-8 flex flex-col gap-3">
+				<div className="relative mt-auto pt-8 flex flex-col gap-3">
 					<div className="flex gap-4">
 						{Socials.map((social) => (
 							<a
@@ -48,9 +52,9 @@ export default function Home() {
 								}
 								rel="noopener noreferrer"
 								title={social.name}
-								className="text-text-muted hover:text-text-primary transition-colors"
+								className="text-text-secondary hover:text-text-primary transition-all duration-200 hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(200,192,180,0.6)]"
 							>
-								<social.icon size={16} />
+								<social.icon size={18} />
 							</a>
 						))}
 					</div>
@@ -83,8 +87,12 @@ export default function Home() {
 						onExitComplete={() => scrollRef.current?.scrollTo({ top: 0 })}
 					/>
 				</main>
-				<footer className="flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
-					<div className="flex gap-4">
+				<footer className="relative overflow-hidden flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
+					<div
+						aria-hidden
+						className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-accent/20 blur-2xl"
+					/>
+					<div className="relative flex gap-4">
 						{Socials.map((social) => (
 							<a
 								key={social.name}
@@ -94,9 +102,9 @@ export default function Home() {
 								}
 								rel="noopener noreferrer"
 								title={social.name}
-								className="text-text-muted hover:text-text-primary transition-colors"
+								className="text-text-secondary hover:text-text-primary transition-all duration-200 hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(200,192,180,0.6)]"
 							>
-								<social.icon size={16} />
+								<social.icon size={18} />
 							</a>
 						))}
 					</div>
