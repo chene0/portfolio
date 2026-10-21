@@ -48,9 +48,9 @@ export default function Home() {
 								}
 								rel="noopener noreferrer"
 								title={social.name}
-								className="text-text-muted hover:text-text-primary transition-colors"
+								className="text-text-secondary hover:text-text-primary transition-all duration-200 hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(200,192,180,0.6)]"
 							>
-								<social.icon size={16} />
+								<social.icon size={18} />
 							</a>
 						))}
 					</div>
@@ -94,9 +94,9 @@ export default function Home() {
 								}
 								rel="noopener noreferrer"
 								title={social.name}
-								className="text-text-muted hover:text-text-primary transition-colors"
+								className="text-text-secondary hover:text-text-primary transition-all duration-200 hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(200,192,180,0.6)]"
 							>
-								<social.icon size={16} />
+								<social.icon size={18} />
 							</a>
 						))}
 					</div>
