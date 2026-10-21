@@ -24,11 +24,7 @@ export default function Home() {
 	return (
 		<div className="h-dvh w-screen flex overflow-hidden bg-bg text-text-primary">
 			{/* Desktop Sidebar */}
-			<aside className="relative hidden md:flex flex-col w-64 flex-shrink-0 border-r border-border p-8 overflow-hidden">
-				<div
-					aria-hidden
-					className="pointer-events-none absolute -bottom-[37px] -left-[37px] h-[107px] w-[107px] rounded-full bg-accent/20 blur-[21px]"
-				/>
+			<aside className="hidden md:flex flex-col w-64 flex-shrink-0 border-r border-border p-8">
 				<div>
 					<h1 className="font-display text-xl font-semibold text-text-primary">
 						Ethan Chen
@@ -41,7 +37,7 @@ export default function Home() {
 				<div className="mt-12">
 					<TabNav active={activeTab} onChange={setActiveTab} />
 				</div>
-				<div className="relative mt-auto pt-8 flex flex-col gap-3">
+				<div className="mt-auto pt-8 flex flex-col gap-3">
 					<div className="flex gap-4">
 						{Socials.map((social) => (
 							<a
@@ -87,12 +83,8 @@ export default function Home() {
 						onExitComplete={() => scrollRef.current?.scrollTo({ top: 0 })}
 					/>
 				</main>
-				<footer className="relative overflow-hidden flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
-					<div
-						aria-hidden
-						className="pointer-events-none absolute -bottom-[21px] -left-[21px] h-[53px] w-[53px] rounded-full bg-accent/20 blur-[13px]"
-					/>
-					<div className="relative flex gap-4">
+				<footer className="flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
+					<div className="flex gap-4">
 						{Socials.map((social) => (
 							<a
 								key={social.name}
