@@ -27,7 +27,7 @@ export default function Home() {
 			<aside className="relative hidden md:flex flex-col w-64 flex-shrink-0 border-r border-border p-8 overflow-hidden">
 				<div
 					aria-hidden
-					className="pointer-events-none absolute -bottom-28 -left-28 h-80 w-80 rounded-full bg-accent/20 blur-3xl"
+					className="pointer-events-none absolute -bottom-[37px] -left-[37px] h-[107px] w-[107px] rounded-full bg-accent/20 blur-[21px]"
 				/>
 				<div>
 					<h1 className="font-display text-xl font-semibold text-text-primary">
@@ -90,7 +90,7 @@ export default function Home() {
 				<footer className="relative overflow-hidden flex-shrink-0 border-t border-border px-6 py-3 flex items-center justify-between">
 					<div
 						aria-hidden
-						className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-accent/20 blur-2xl"
+						className="pointer-events-none absolute -bottom-[21px] -left-[21px] h-[53px] w-[53px] rounded-full bg-accent/20 blur-[13px]"
 					/>
 					<div className="relative flex gap-4">
 						{Socials.map((social) => (
