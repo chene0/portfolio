@@ -306,7 +306,7 @@ export const Experiences: Experience[] = [
 		technologies: [SKILL_PHP, SKILL_SYMFONY],
 	},
 	{
-		role: "Full Stack Developer Co-op",
+		role: "Software Engineer Intern",
 		company: "BTNX Inc.",
 		location: "Pickering, Ontario",
 		location_type: "Onsite",
