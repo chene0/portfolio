@@ -407,7 +407,7 @@ export const Extracurriculars: Experience[] = [
 
 export const Projects: Project[] = [
 	{
-		thumbnail: "/uofthacks13.jpg",
+		thumbnail: "/project_thumbnails/uofthacks13.jpg",
 		thumbnail_alt: "UofTHacks 13",
 		name: "flashbang",
 		description:
@@ -431,7 +431,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/hackthevalley_x.png",
+		thumbnail: "/project_thumbnails/hackthevalley_x.png",
 		thumbnail_alt: "Hack the Valley X",
 		name: "Gym Scroller",
 		description:
@@ -450,7 +450,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/terrahacks2025.png",
+		thumbnail: "/project_thumbnails/terrahacks2025.png",
 		thumbnail_alt: "TerraHacks 2025",
 		name: "PainAR",
 		description:
@@ -464,7 +464,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/geesehacks2025.png",
+		thumbnail: "/project_thumbnails/geesehacks2025.png",
 		thumbnail_alt: "GeeseHacks 2025",
 		name: "GeeseTalk",
 		description:
@@ -488,7 +488,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/ece198.png",
+		thumbnail: "/project_thumbnails/ece198.png",
 		thumbnail_alt: "ECE 198",
 		name: "Home Power Monitoring Device",
 		description:
@@ -496,7 +496,7 @@ export const Projects: Project[] = [
 		links: [],
 	},
 	{
-		thumbnail: "/portfolio.png",
+		thumbnail: "/project_thumbnails/portfolio.png",
 		thumbnail_alt: "Portfolio",
 		name: "This portfolio!",
 		description: "Built with NextJS, React, and Tailwind.",
@@ -509,7 +509,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/vance.png",
+		thumbnail: "/project_thumbnails/vance.png",
 		thumbnail_alt: "Vance",
 		name: "Vance",
 		description:
@@ -528,7 +528,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/focar.png",
+		thumbnail: "/project_thumbnails/focar.png",
 		thumbnail_alt: "Focar",
 		name: "Focar",
 		description: "Interact with Todoist right from your desktop.",
@@ -541,7 +541,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/pilon.jpg",
+		thumbnail: "/project_thumbnails/pilon.jpg",
 		thumbnail_alt: "Pilon",
 		name: "Pilon",
 		description:
@@ -560,7 +560,7 @@ export const Projects: Project[] = [
 		],
 	},
 	{
-		thumbnail: "/fps.PNG",
+		thumbnail: "/project_thumbnails/fps.PNG",
 		thumbnail_alt: "First Person Shooter",
 		name: "Untitled First Person Shooter",
 		description:
