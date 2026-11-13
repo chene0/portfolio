@@ -323,6 +323,24 @@ export const Experiences: Experience[] = [
 
 export const Extracurriculars: Experience[] = [
 	{
+		role: "Backend Lead",
+		company: "Hack the North",
+		location: "Waterloo, Ontario",
+		location_type: "Hybrid",
+		company_link: "https://hackthenorth.com/",
+		company_logo: "/extracurricular_logos/hack_the_north.jpg",
+		company_logo_alt: "Hack the North Logo",
+		start_date: new Date(2026, 10),
+		end_date: "Present",
+		description: "Leading backend development for Canada's largest hackathon",
+		technologies: [
+			SKILL_TYPESCRIPT,
+			SKILL_GRAPHQL,
+			SKILL_PRISMA,
+			SKILL_POSTGRES,
+		],
+	},
+	{
 		role: "Backend Developer",
 		company: "Hack the North",
 		location: "Waterloo, Ontario",
@@ -331,7 +349,7 @@ export const Extracurriculars: Experience[] = [
 		company_logo: "/extracurricular_logos/hack_the_north.jpg",
 		company_logo_alt: "Hack the North Logo",
 		start_date: new Date(2026, 1),
-		end_date: "Present",
+		end_date: new Date(2026, 10),
 		description: "Building backend systems for Canada's largest hackathon",
 		technologies: [
 			SKILL_TYPESCRIPT,
