@@ -18,6 +18,14 @@ const item = {
 export function ProjectsComponent() {
     const [loaded, setLoaded] = useState<boolean[]>(Projects.map(() => false))
 
+    const markLoaded = (index: number) => {
+        setLoaded(prev => {
+            const next = [...prev]
+            next[index] = true
+            return next
+        })
+    }
+
     return (
         <motion.ul
             variants={container}
@@ -33,17 +41,27 @@ export function ProjectsComponent() {
                     className="bg-bg-raised flashlight-card rounded-xl hover:shadow-md hover:shadow-black/30"
                 >
                     <div className={`w-full aspect-[16/9] relative overflow-hidden rounded-t-xl ${!loaded[index] ? 'img-shimmer' : ''}`}>
-                        <Image
-                            src={project.thumbnail}
-                            alt={project.thumbnail_alt}
-                            fill
-                            onLoad={() => setLoaded(prev => {
-                                const next = [...prev]
-                                next[index] = true
-                                return next
-                            })}
-                            className={`object-cover transition-opacity duration-500 ${loaded[index] ? 'opacity-100' : 'opacity-0'}`}
-                        />
+                        {/\.(mp4|webm|ogv)(?:[?#]|$)/i.test(project.thumbnail) ? (
+                            <video
+                                src={project.thumbnail}
+                                aria-label={project.thumbnail_alt}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                preload="metadata"
+                                onLoadedData={() => markLoaded(index)}
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${loaded[index] ? 'opacity-100' : 'opacity-0'}`}
+                            />
+                        ) : (
+                            <Image
+                                src={project.thumbnail}
+                                alt={project.thumbnail_alt}
+                                fill
+                                onLoad={() => markLoaded(index)}
+                                className={`object-cover transition-opacity duration-500 ${loaded[index] ? 'opacity-100' : 'opacity-0'}`}
+                            />
+                        )}
                     </div>
                     <div className="p-4">
                         <h3 className="font-display font-semibold text-text-primary text-base" style={{ margin: '0 0 4px 0' }}>
