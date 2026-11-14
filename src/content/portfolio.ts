@@ -407,6 +407,14 @@ export const Extracurriculars: Experience[] = [
 
 export const Projects: Project[] = [
 	{
+		thumbnail: "/project_thumbnails/hacker_directory_demo.webm",
+		thumbnail_alt: "Hacker Directory Demo",
+		name: "Hacker Directory",
+		description:
+			"Turning “anyone need a teammate?” into “wait, we should build this.” Hacker Directory is a space for Hack the North participants to reach out to fellow builders and find their next team.\n\nBuilt with the Hack the North organizing team ([demo video credit](https://www.franceszhao.ca/works/hacker-directory)).",
+		links: [],
+	},
+	{
 		thumbnail: "/project_thumbnails/uofthacks13.jpg",
 		thumbnail_alt: "UofTHacks 13",
 		name: "flashbang",

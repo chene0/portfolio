@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Projects } from "@/content/portfolio";
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import ReactMarkdown, { type Components } from 'react-markdown';
 
 const container = {
     hidden: {},
@@ -13,6 +14,20 @@ const container = {
 const item = {
     hidden: { opacity: 0, y: 10 },
     show:   { opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' } }
+}
+
+const markdownComponents: Components = {
+    a: ({ href, title, children }) => (
+        <a
+            href={href}
+            title={title}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-normal text-inherit underline decoration-text-muted underline-offset-2 transition-colors hover:text-text-primary hover:decoration-text-secondary"
+        >
+            {children}
+        </a>
+    ),
 }
 
 export function ProjectsComponent() {
@@ -67,9 +82,11 @@ export function ProjectsComponent() {
                         <h3 className="font-display font-semibold text-text-primary text-base" style={{ margin: '0 0 4px 0' }}>
                             {project.name}
                         </h3>
-                        <p className="text-text-secondary text-sm leading-relaxed" style={{ margin: '0 0 12px 0' }}>
-                            {project.description}
-                        </p>
+                        <div className="prose prose-sm max-w-none text-text-secondary leading-relaxed prose-p:my-3 prose-p:whitespace-pre-line [&>:first-child]:mt-0 [&>:last-child]:mb-0" style={{ margin: '0 0 12px 0' }}>
+                            <ReactMarkdown skipHtml components={markdownComponents}>
+                                {project.description}
+                            </ReactMarkdown>
+                        </div>
                         {project.links.length > 0 && (
                             <div className="flex gap-3">
                                 {project.links.map((link) => (

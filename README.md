@@ -32,6 +32,18 @@ Set each project's `thumbnail` path in `src/content/portfolio.ts`. Put local med
 - Both use the same 16:9, cover-cropped thumbnail area and loading fade.
   `thumbnail_alt` supplies the image alt text or video's accessible label.
 
+## Project descriptions
+
+Project `description` strings support Markdown: `[links](https://example.com)`,
+`**bold**`, `*italic*`, lists, and inline code. Links open in a new tab.
+Links inherit the description text color with a subtle underline and brighten on hover.
+Single `\n` line breaks are preserved; `\n\n` starts a new paragraph.
+Raw HTML is disabled and unsafe link protocols are filtered.
+
+```ts
+description: "Meet fellow builders.\n\nBuilt with the [Hack the North](https://hackthenorth.com) organizing team."
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
