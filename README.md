@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Project thumbnails
+
+Set each project's `thumbnail` path in `src/content/portfolio.ts`. Put local media in
+`public/` and use a root-relative path, for example `thumbnail: "/demo.webm"`.
+
+- `.mp4`, `.webm`, and `.ogv` paths (case-insensitive, including query strings or
+  fragments) render as muted, autoplaying, looping inline videos without controls.
+  Use browser-compatible codecs, such as H.264 in MP4 or VP8/VP9 in WebM.
+- Image paths, including animated GIFs, continue to use Next.js Image.
+- Both use the same 16:9, cover-cropped thumbnail area and loading fade.
+  `thumbnail_alt` supplies the image alt text or video's accessible label.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
